@@ -1,416 +1,476 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description"
+    content="Build tiny AI robots. Shop kits, AI-ready control boards, and tutorials, and join in-person robotics events and competitions." />
+  <meta name="author" content="BugBotLab" />
+  <title>BugBotLab — Build tiny AI robots.</title>
 
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Build tiny AI robots. Shop kits and boards, follow hands-on tutorials, and join in-person robotics events and competitions." />
-    <meta name="author" content="BugBotLab" />
-    <title>BugBotLab — Build tiny AI robots.</title>
+  <link rel="icon" type="image/x-icon" href="assets/img/green_bug.png" />
+  <!-- Font Awesome -->
+  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+  <!-- Google fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet" />
+  <!-- Core theme CSS (includes Bootstrap) -->
+  <link href="css/styles.css" rel="stylesheet" />
 
-    <link rel="icon" type="image/x-icon" href="assets/img/green_bug.png" />
-    <!-- Font Awesome -->
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <!-- Google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
-    <!-- Core theme CSS (includes Bootstrap) -->
-    <link href="css/styles.css" rel="stylesheet" />
+  <style>
 
-    <script type="text/javascript" async="" src="https://static.klaviyo.com/onsite/js/Wpx3d9/klaviyo.js"></script>;
-    <!-- Hard overrides + carousel + full-height sections -->
-    <style>
-      /* Bulletproof hero title color */
-      #heroTitle, #heroTitle * { color:#181818 !important; -webkit-text-fill-color:#181818 !important; text-shadow:none !important; filter:none !important; }
-      #heroTitle .badge { background:#198754 !important; color:#fff !important; }
+  </style>
+</head>
 
-      /* Small visual polish */
-      .btn-cta { font-weight: 800; border-width: 2px; }
-      .badge-pill, .rounded-pill { border-radius: 9999px; }
-      .section-label { letter-spacing:.08em; font-weight:800; text-transform:uppercase; font-size:.8rem; color:#5b6b73; }
-      .hero-sub { max-width: 780px; margin: 0 auto; color:#333; }
-      .logo-img { width:65vw; min-width: 320px; max-width: 800px; }
-      .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
+<body id="page-top">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white" id="mainNav">
+    <div class="container px-4 px-lg-5">
+      <a class="navbar-brand" href="#page-top">BugBotLab</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#shop">Shop</a></li>
+          <li class="nav-item"><a class="nav-link" href="#learn">Learn</a></li>
+          <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-      /* ===== REUSABLE CAROUSEL (no external libs) ===== */
-      :root { --shop-spv: 1; --shop-gap: 1rem; }
-      @media (min-width: 576px) { :root { --shop-spv: 2; } }
-      @media (min-width: 992px) { :root { --shop-spv: 3; } }
+  <!-- Masthead / Hero -->
+  <header class="masthead vh-section">
+    <div class="container px-4 px-lg-5 h-100">
+      <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+        <div class="col-lg-10 align-self-end">
+          <div class="d-flex justify-content-center">
+            <div class="text-center">
+              <img src="assets/img/hozLog.svg" alt="BugBotLab Logo" class="logo-img" />
+              <h2 id="heroTitle" class="mx-auto mt-3 mb-3" style="font-size: clamp(2rem, 5vw, 3rem);">
+                Build tiny <strong>AI</strong> robots.
+              </h2>
+              <p class="hero-sub mb-4">
+                Kits, AI-ready control boards, and hands-on lessons for computer vision, motion, and haptics.
+              </p>
+              <div class="d-flex gap-2 justify-content-center flex-wrap" style="padding-top: 40px;">
+                <a class="btn btn-primary btn-lg btn-cta" href="#shop"><b>Shop for Kits</b></a>
+                <a class="btn btn-outline-dark btn-lg btn-cta" href="#learn"><b>Start Free Course</b></a>
+                <a class="btn btn-outline-secondary btn-lg btn-cta" href="#events"><b>Find Events</b></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-      .shop-carousel { position: relative; }
-      .shop-track {
-        display: grid;
-        grid-auto-flow: column;
-        grid-auto-columns: calc((100% - (var(--shop-gap) * (var(--shop-spv) - 1))) / var(--shop-spv));
-        gap: var(--shop-gap);
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: .75rem;
+  <!-- About -->
+  <section class="about-section text-center vh-section" id="about">
+    <div class="container px-4 px-lg-5">
+      <!-- Row 1: heading + text -->
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-lg-9" style="padding-bottom: 0px; margin: 0px;">
+          <img src="assets/img/BasicLogo.svg" alt="BugBotLab Logo" style="width:160px;" />
+          <p class="section-label mt-4" style="font-size: x-large;padding-bottom: 0%;margin-bottom: 5%;">About</p>
+          <h2 class="mb-3">Where tiny robots teach big ideas.</h2>
+          <p class="text-black-50" style="padding-bottom: 40px; margin: 0px;">
+            We believe the best way to learn is by doing. Our AI-ready, bug-inspired robots bring micro-robotics into
+            classrooms, workshops, and homes. From the first servo sweep to on-device vision and gestures, BugBotLab makes
+            STEM learning accessible, exciting, and unforgettable.
+          </p>
+        </div>
+      </div>
+
+      <!-- Row 2: three cards -->
+      <div class="row gx-4 gx-lg-5 mt-3">
+        <div class="col-md-4 mb-3">
+          <div class="card about-card">
+            <div>
+              <h5 class="mb-2"><strong>Shop</strong></h5>
+              <p class="mb-0">Kits, boards, and parts designed for makers and classrooms.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <div class="card about-card">
+            <div>
+              <h5 class="mb-2"><strong>Learn</strong></h5>
+              <p class="mb-0">Free tutorials and courses.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <div class="card about-card">
+            <div>
+              <h5 class="mb-2"><strong>Events</strong></h5>
+              <p class="mb-0">Workshops and friendly competitions to level up together.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shop -->
+  <section class="projects-section bg-light vh-section" id="shop">
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center mb-4 text-center">
+        <div class="col-lg-8">
+          <p class="section-label">Shop</p>
+          <h2 class="mb-3">Kits &amp; control boards</h2>
+          <p class="text-muted">
+            Kits, boards, and parts designed for makers and classrooms. Everything you need to get from blinking LEDs
+            to tiny robots that see and feel.
+          </p>
+        </div>
+      </div>
+
+      <div class="shop-carousel" role="region" aria-label="Shop carousel">
+        <button class="shop-prev" aria-label="Previous slide" id="shopPrev">‹</button>
+        <ul class="shop-track" id="shopTrack" role="list" tabindex="0"></ul>
+        <button class="shop-next" aria-label="Next slide" id="shopNext">›</button>
+      </div>
+      <div class="shop-dots mt-3" id="shopDots" aria-label="Slides navigation"></div>
+    </div>
+  </section>
+
+  <!-- Learn -->
+  <section class="projects-section vh-section" id="learn">
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center mb-4 text-center">
+        <div class="col-lg-8">
+          <p class="section-label">Learn</p>
+          <h2 class="mb-3">Free tutorials &amp; courses</h2>
+          <p class="text-muted">
+            Step-by-step lessons that introduce sensing, motion, AI workflows, and debugging — written for real classrooms.
+          </p>
+        </div>
+      </div>
+
+      <div class="shop-carousel" role="region" aria-label="Learn carousel">
+        <button class="shop-prev" aria-label="Previous slide" id="learnPrev">‹</button>
+        <ul class="shop-track list-unstyled m-0" id="learnTrack" role="list" tabindex="0"></ul>
+        <button class="shop-next" aria-label="Next slide" id="learnNext">›</button>
+      </div>
+      <div class="shop-dots mt-3" id="learnDots" aria-label="Slides navigation"></div>
+    </div>
+  </section>
+
+  <!-- Events -->
+  <section class="projects-section bg-light vh-section" id="events">
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center mb-4 text-center">
+        <div class="col-lg-8">
+          <p class="section-label">Events</p>
+          <h2 class="mb-3">Workshops &amp; challenges</h2>
+          <p class="text-muted">
+            In-person and online events where learners race, debug, and iterate together in a friendly, low-stakes format.
+          </p>
+        </div>
+      </div>
+
+      <div class="shop-carousel" role="region" aria-label="Events carousel">
+        <button class="shop-prev" aria-label="Previous slide" id="eventsPrev">‹</button>
+        <ul class="shop-track list-unstyled m-0" id="eventsTrack" role="list" tabindex="0"></ul>
+        <button class="shop-next" aria-label="Next slide" id="eventsNext">›</button>
+      </div>
+      <div class="shop-dots mt-3" id="eventsDots" aria-label="Slides navigation"></div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact-section vh-section" id="contact" style="background-color: rgba(191, 215, 181, 1);">
+    <div class="container px-4 px-lg-5">
+      <div class="col-md-6 mb-3 mb-md-0 mx-auto">
+        <div class="card py-4 h-100">
+          <div class="card-body text-center">
+            <h5 class="mb-2"><strong>CONTACT</strong></h5>
+            <div class="klaviyo-form-YyvsaF"></div>
+            <div class="social d-flex justify-content-center mt-3">
+              <a class="mx-2" href="https://www.instagram.com/bugbotlab/"><i class="fab fa-instagram text-black"></i></a>
+              <a class="mx-2" href="https://github.com/BugBotLab"><i class="fab fa-github text-black"></i></a>
+              <a class="mx-2" href="#"><i class="fab fa-discord text-black"></i></a>
+              <a class="mx-2" href="mailto:info@bugbotlab.com"><i class="fas fa-envelope text-black"></i></a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer small text-center text-black-50">
+    <div class="container px-4 px-lg-5">
+      Copyright &copy; BugBotLab
+      <span id="copyrightYear"></span>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Core theme JS -->
+  <script src="js/scripts.js"></script>
+
+  <!-- Navbar height sync for vh-section -->
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const nav = document.querySelector('#mainNav');
+
+      function setNavHeight() {
+        if (!nav) return;
+        const h = nav.getBoundingClientRect().height || 80;
+        root.style.setProperty('--nav-h', h + 'px');
       }
-      .shop-track::-webkit-scrollbar { display: none; }
-      .shop-slide { scroll-snap-align: start; }
 
-      .shop-card { border: 1px solid #e5e7eb; border-radius: 1rem; overflow: hidden; background: #fff; display:flex; flex-direction: column; height:100%; box-shadow: 0 1px 2px rgba(0,0,0,.05); }
-
-      /* FILL + CROP images in a fixed 4:3 area */
-      .shop-img { aspect-ratio: 4/3; width:100%; height:auto; object-fit:cover; object-position:center; background:transparent; display:block; }
-
-      .shop-body { padding: 1rem; display:flex; flex-direction: column; gap: .25rem; flex:1; }
-      .shop-price { font-weight: 800; }
-      .shop-actions { margin-top:auto; display:flex; gap:.5rem; flex-wrap: wrap; }
-
-      .shop-desc{ font-size:.925rem; color:#6b7280; margin:.25rem 0 .25rem; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
-
-      .shop-prev, .shop-next {
-        position: absolute; top:45%; translate:0 -50%;
-        background: rgba(0,0,0,.65); color:#fff; border:0; width:42px; height:42px; border-radius:9999px;
-        display:grid; place-content:center; cursor:pointer;
+      setNavHeight();
+      window.addEventListener('resize', setNavHeight);
+      window.addEventListener('orientationchange', setNavHeight);
+      document.addEventListener('readystatechange', setNavHeight);
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(setNavHeight).catch(() => { });
       }
-      .shop-prev { left:.25rem; } .shop-next { right:.25rem; }
-      @media (hover:hover){ .shop-prev,.shop-next{opacity:0; transition:opacity .2s;} .shop-carousel:hover .shop-prev, .shop-carousel:hover .shop-next{opacity:1;} }
-      .shop-dots { display:flex; gap:.5rem; justify-content:flex-end; }
-      .shop-dot { width:10px; height:10px; border-radius:9999px; background:#d1d5db; border:0; }
-      .shop-dot[aria-current="true"] { background:#111827; }
+      document.addEventListener('shown.bs.collapse', setNavHeight);
+      document.addEventListener('hidden.bs.collapse', setNavHeight);
+    })();
+  </script>
 
-      /* ===== Full-height sections accounting for fixed navbar ===== */
-
-      .vh-section{
-        /* exact height = viewport - navbar (padding included via border-box) */
-        height: calc(100vh - var(--nav-h));     /* fallback */
-        height: calc(100dvh - var(--nav-h));    /* mobile-friendly */
-        box-sizing: border-box;
-        padding-block: var(--section-pad);
-        display: flex;
-        justify-content: center;
-        align-items: center;                    /* vertically center contents */
-      }
-      /* container no longer adds extra vertical padding */
-    </style>
-  </head>
-  <body id="page-top">
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white" id="mainNav">
-      <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="#page-top">BugBotLab</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menu <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="#shop">Shop</a></li>
-            <li class="nav-item"><a class="nav-link" href="#learn">Learn</a></li>
-            <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
-            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Masthead / Hero (kept as-is) -->
-    <header class="masthead">
-      <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
-        <div class="d-flex justify-content-center">
-          <div class="text-center">
-            <img src="assets/img/hozLog.svg" alt="BugBotLab Logo" class="logo-img" />
-            <h1 id="heroTitle" class="mx-auto mt-3 mb-3" style="font-size: clamp(2rem, 5vw, 3rem);">
-              Build tiny <strong>AI</strong> robots.
-            </h1>
-            <p class="hero-sub mb-4">
-              Kits, AI-ready control boards, and hands-on lessons for computer vision, motion, and haptics.
-            </p>
-            <div class="d-flex gap-2 justify-content-center flex-wrap" style="padding-top: 40px;">
-              <a class="btn btn-primary btn-lg btn-cta" href="#shop"><b>Shop for Kits</b></a>
-              <a class="btn btn-outline-dark btn-lg btn-cta" href="#learn"><b>Start Free Course</b></a>
-              <a class="btn btn-outline-secondary btn-lg btn-cta" href="#events"><b>Find Events</b></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <!-- About -->
-    <section class="about-section text-center vh-section" id="about">
-      <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-          <div class="col-lg-9" style="padding-bottom: 0px; margin: 0px;">
-            <img src="assets/img/BasicLogo.svg" alt="BugBotLab Logo" style="width:160px;" />
-            <p class="section-label mt-4" style="font-size: x-large;padding-bottom: 0%;margin-bottom: 5%;">About</p>
-            <h2 class="mb-3">Where tiny robots teach big ideas.</h2>
-            <p class="text-black-50" style="padding-bottom: 40px; margin: 0px;">
-              We believe the best way to learn is by doing. Our AI-ready, bug-inspired robots bring micro-robotics into
-              classrooms, workshops, and homes. From the first servo sweep to on-device vision and gestures, BugBotLab makes
-              STEM learning accessible, exciting, and unforgettable.
-            </p>
-          </div>
-
-          <div class="col-md-4">
-            <div class="card" style="height:220px; display:flex; align-items:center; justify-content:center; text-align:center; box-shadow:0 .5rem 1rem rgba(0,0,0,.15);">
-              <div>
-                <h5 style="margin:10px"><strong>Shop</strong></h5>
-                <p style="margin:10px;">Kits, boards, and parts designed for makers and classrooms.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="card" style="height:220px; display:flex; align-items:center; justify-content:center; text-align:center; box-shadow:0 .5rem 1rem rgba(0,0,0,.15);">
-              <div>
-                <h5 style="margin:10px;"><strong>Learn</strong></h5>
-                <p style="margin:10px;">Free tutorials and courses</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="card" style="height:220px; display:flex; align-items:center; justify-content:center; text-align:center; box-shadow:0 .5rem 1rem rgba(0,0,0,.15);">
-              <div>
-                <h5 style="margin:10px"><strong>Events</strong></h5>
-                <p style="margin:10px;">Workshops and friendly competitions to level up together.</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Shop (carousel) -->
-    <section class="projects-section bg-light vh-section" id="shop">
-      <div class="container px-4 px-lg-5">
-        <div class="d-flex align-items-end justify-content-between mb-2">
-          <p class="section-label m-0">Shop</p>
-          <div class="shop-dots" id="shopDots" aria-label="Slides navigation"></div>
-        </div>
-
-        <div class="shop-carousel" role="region" aria-label="Shop products carousel">
-          <button class="shop-prev" aria-label="Previous slide" id="shopPrev">‹</button>
-          <ul class="shop-track list-unstyled m-0" id="shopTrack" role="list" tabindex="0"></ul>
-          <button class="shop-next" aria-label="Next slide" id="shopNext">›</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Learn (carousel) -->
-    <section id="learn" class="bg-white vh-section">
-      <div class="container px-4 px-lg-5">
-        <div class="d-flex align-items-end justify-content-between mb-2">
-          <p class="section-label m-0">Learn</p>
-          <div class="shop-dots" id="learnDots" aria-label="Slides navigation"></div>
-        </div>
-
-        <div class="shop-carousel" role="region" aria-label="Learn carousel">
-          <button class="shop-prev" aria-label="Previous slide" id="learnPrev">‹</button>
-          <ul class="shop-track list-unstyled m-0" id="learnTrack" role="list" tabindex="0"></ul>
-          <button class="shop-next" aria-label="Next slide" id="learnNext">›</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Events (carousel) -->
-    <section id="events" class="bg-light vh-section">
-      <div class="container px-4 px-lg-5">
-        <div class="d-flex align-items-end justify-content-between mb-2">
-          <p class="section-label m-0">Events</p>
-          <div class="shop-dots" id="eventsDots" aria-label="Slides navigation"></div>
-        </div>
-
-        <div class="shop-carousel" role="region" aria-label="Events carousel">
-          <button class="shop-prev" aria-label="Previous slide" id="eventsPrev">‹</button>
-          <ul class="shop-track list-unstyled m-0" id="eventsTrack" role="list" tabindex="0"></ul>
-          <button class="shop-next" aria-label="Next slide" id="eventsNext">›</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="contact-section vh-section" id="contact" style="background-color: rgba(191, 215, 181, 1);">
-      <div class="container px-4 px-lg-5">
-        <div class="col-md-6 mb-3 mb-md-0 mx-auto">
-          <div class="card py-4 h-100">
-            <div class="card-body text-center">
-              <div class="klaviyo-form-YyvsaF"></div>
-              <div class="social d-flex justify-content-center mt-3">
-                <a class="mx-2" href="https://www.instagram.com/bugbotlab/"><i class="fab fa-instagram text-black"></i></a>
-                <a class="mx-2" href="https://github.com/BugBotLab"><i class="fab fa-github text-black"></i></a>
-                <a class="mx-2" href="#"><i class="fab fa-discord text-black"></i></a>
-                <a class="mx-2" href="mailto:info@bugbotlab.com"><i class="fas fa-envelope text-black"></i></a>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer (not full-height) -->
-    <footer class="footer small text-center text-black-50" style="background-color: rgba(191, 215, 181, 1);">
-      <div class="container px-4 px-lg-5">Copyright &copy; BugBotLab 2025</div>
-    </footer>
-
-    <!-- Bootstrap core JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS -->
-    <script src="js/scripts.js"></script>
-    <!-- SB Forms (optional) -->
-
-    <!-- ==== Navbar height → CSS var ==== -->
-    <script>
-      (function(){
-        const root = document.documentElement;
-        const nav  = document.getElementById('mainNav');
-        function setNavHeight(){
-          if(!nav) return;
-          const h = nav.offsetHeight || 64;
-          root.style.setProperty('--nav-h', h + 'px');
-        }
-        setNavHeight();
-        window.addEventListener('load', setNavHeight);
-        window.addEventListener('resize', setNavHeight);
-        window.addEventListener('orientationchange', setNavHeight);
-        document.addEventListener('readystatechange', setNavHeight);
-        if (document.fonts && document.fonts.ready) { document.fonts.ready.then(setNavHeight).catch(()=>{}); }
-        document.addEventListener('shown.bs.collapse', setNavHeight);
-        document.addEventListener('hidden.bs.collapse', setNavHeight);
-      })();
-    </script>
-
-    <!-- ==== Carousels Script (Shop, Learn, Events) ==== -->
-    <script>
-
-      /* ----------------- Data ----------------- */
+  <!-- ==== Carousels Script (Shop, Learn, Events) ==== -->
+  <script>
+    (function () {
+      // ---- Data ----
       const SHOP_PRODUCTS = [
-        { id:'pcm-mini', title:'BugBot Board', desc:'32-bit MCU with IMU, camera connector, and TinyML-ready DSP.', price:49.99, image:'assets/img/BugBot Board.png', href:'#contact', cta:'Coming Soon' },
-        { id:'bugbot-kit', title:'BugBot Kit', desc:'Everything you need for your first vision + motion project.', price:99.99, image:'assets/img/BugBot.png', href:'#contact', cta:'Coming Soon' }
+        {
+          id: 'pcm-mini',
+          title: 'BugBot Board',
+          desc: '32-bit microcontroller, motor drivers, IMU, and more on a tiny board.',
+          price: '',
+          image: 'assets/img/BugBot Board.png',
+          href: '#contact',
+          cta: 'Coming Soon'
+        },
+        {
+          id: 'bugbot-kit',
+          title: 'BugBot Kit',
+          desc: 'Everything you need to build your own tiny AI-ready bug-inspired robot.',
+          price: '',
+          image: 'assets/img/BugBot.png',
+          href: '#contact',
+          cta: 'Coming Soon'
+        }
       ];
 
       const LEARN_ITEMS = [
-        { id:'course-intro',  title:'Free Intro Course',  desc:'Blink → servo sweep → IMU tilt → first TinyML model. ~90 minutes.', image:'assets/img/robot.png',   href:'#contact', cta:'Coming Soon', primary:true }
+        {
+          id: 'course-intro',
+          title: 'Free Intro Course',
+          desc: 'From blinking to bugs: a gentle first course in tiny AI robots.',
+          image: 'assets/img/robot.png',
+          href: '#contact',
+          cta: 'Coming Soon'
+        }
       ];
 
       const EVENTS_ITEMS = [
-        { id:'ai-vision-maze',     title:'AI Vision Maze',      desc:'Follow colored markers. Score for speed + accuracy.', image:'assets/img/maze.png',       href:'#contact', cta:'Coming Soon', primary:true },
+        {
+          id: 'ai-vision-maze',
+          title: 'AI Vision Maze',
+          desc: 'Friendly challenge where robots navigate a maze using onboard vision.',
+          image: 'assets/img/maze.png',
+          href: '#contact',
+          cta: 'Coming Soon'
+        }
       ];
 
-      /* ------------- Utilities ------------- */
-      function slidesPerView(){
-        const v = getComputedStyle(document.documentElement).getPropertyValue('--shop-spv').trim();
-        const n = parseInt(v,10); return isNaN(n)?1:n;
-      }
-      function makeId(prefix, idx){ return `${prefix}-x${idx}`; }
-
-      /* ------------- Renderers ------------- */
-      function renderShopCard(p, idx, prefix){
-        const titleId = makeId(`${prefix}-title`, idx);
-        const descId  = makeId(`${prefix}-desc`, idx);
-        return `
-          <article class="shop-card" data-product-id="${p.id}"
-                   role="group" aria-labelledby="${titleId}" ${p.desc ? `aria-describedby="${descId}"` : ''}>
-            ${p.image ? `<a href="${p.href}" aria-label="${p.title}"><img class="shop-img" loading="lazy" src="${p.image}" alt="${p.title}"></a>` : ''}
-            <div class="shop-body">
-              <h5 class="m-0" id="${titleId}"><a href="${p.href}" class="text-decoration-none text-dark">${p.title}</a></h5>
-              ${p.desc ? `<p class="shop-desc" id="${descId}">${p.desc}</p>` : ''}
-              ${p.price!=null ? `<div class="shop-price">${moneyGBP(p.price)}</div>` : ''}
-              <div class="shop-actions">
-                <a class="btn btn-outline-dark btn-cta" href="${p.href}">${p.cta || 'View'}</a>
-              </div>
-            </div>
-          </article>`;
+      // ---- Slide templates ----
+      function renderProductSlide(p) {
+        return [
+          '<article class="shop-card" data-product-id="' + p.id + '">',
+          p.image ? (
+            '<div class="shop-img-wrap">' +
+            '<img class="shop-img" src="' + p.image + '" alt="' + p.title.replace(/"/g, '&quot;') + '">' +
+            '</div>'
+          ) : '',
+          '<div class="shop-body">',
+          '<h3 class="h5 mb-1">' + p.title + '</h3>',
+          p.price ? '<div class="shop-price">' + p.price + '</div>' : '',
+          p.desc ? '<p class="shop-desc">' + p.desc + '</p>' : '',
+          '<div class="shop-actions">',
+          '<a class="btn btn-sm btn-dark rounded-pill" href="' + p.href + '">' + (p.cta || 'Learn more') + '</a>',
+          '</div>',
+          '</div>',
+          '</article>'
+        ].join('');
       }
 
-      function renderInfoCard(p, idx, prefix){
-        const titleId = makeId(`${prefix}-title`, idx);
-        const descId  = makeId(`${prefix}-desc`, idx);
-        const btnClass = p.primary ? 'btn btn-primary btn-cta' : 'btn btn-outline-dark btn-cta';
-        return `
-          <article class="shop-card" role="group" aria-labelledby="${titleId}" ${p.desc ? `aria-describedby="${descId}"` : ''}>
-            ${p.image ? `<a href="${p.href}" aria-label="${p.title}"><img class="shop-img" loading="lazy" src="${p.image}" alt="${p.title}"></a>` : ''}
-            <div class="shop-body">
-              <h5 class="m-0" id="${titleId}">${p.title}</h5>
-              ${p.desc ? `<p class="shop-desc" id="${descId}">${p.desc}</p>` : ''}
-              <div class="shop-actions">
-                <a class="${btnClass} btn-sm" href="${p.href}">${p.cta || 'Learn more'}</a>
-              </div>
-            </div>
-          </article>`;
+      function renderInfoSlide(p) {
+        return [
+          '<article class="shop-card">',
+          p.image ? (
+            '<div class="shop-img-wrap">' +
+            '<img class="shop-img" src="' + p.image + '" alt="' + p.title.replace(/"/g, '&quot;') + '">' +
+            '</div>'
+          ) : '',
+          '<div class="shop-body">',
+          '<h3 class="h5 mb-1">' + p.title + '</h3>',
+          p.desc ? '<p class="shop-desc">' + p.desc + '</p>' : '',
+          '<div class="shop-actions">',
+          '<a class="btn btn-sm btn-dark rounded-pill" href="' + p.href + '">' + (p.cta || 'Learn more') + '</a>',
+          '</div>',
+          '</div>',
+          '</article>'
+        ].join('');
       }
 
-      /* ------------- Generic Carousel Builder ------------- */
-      function createCarousel({ trackId, dotsId, prevId, nextId, items, render, idPrefix }){
-        const track = document.getElementById(trackId);
-        const dots  = document.getElementById(dotsId);
-        const prev  = document.getElementById(prevId);
-        const next  = document.getElementById(nextId);
+      // ---- Generic carousel ----
+      function initCarousel(config) {
+        var track = document.getElementById(config.trackId);
+        var dotsBox = document.getElementById(config.dotsId);
+        var prevBtn = document.getElementById(config.prevId);
+        var nextBtn = document.getElementById(config.nextId);
+        var items = config.items;
+        var render = config.render;
+
+        if (!track || !dotsBox || !prevBtn || !nextBtn || !items || !items.length) {
+          return;
+        }
 
         // Build slides
         track.innerHTML = '';
-        items.forEach((p, i) => {
-          const li = document.createElement('li');
+        for (var i = 0; i < items.length; i++) {
+          var li = document.createElement('li');
           li.className = 'shop-slide';
-          li.role = 'listitem';
-          li.innerHTML = render(p, i, idPrefix || trackId);
+          li.innerHTML = render(items[i], i);
           track.appendChild(li);
-        });
+        }
+        var slides = Array.prototype.slice.call(track.children);
 
-        function slideWidth(){ return track.clientWidth / slidesPerView(); }
+        // Build dots
+        dotsBox.innerHTML = '';
+        for (var j = 0; j < slides.length; j++) {
+          var dot = document.createElement('button');
+          dot.type = 'button';
+          dot.className = 'shop-dot';
+          dot.setAttribute('aria-label', 'Go to slide ' + (j + 1));
+          (function (index) {
+            dot.addEventListener('click', function () {
+              goTo(index);
+            });
+          })(j);
+          dotsBox.appendChild(dot);
+        }
+        var dots = Array.prototype.slice.call(dotsBox.children);
 
-        function updateDots(){
-          const w = slideWidth();
-          const page = Math.round(track.scrollLeft / w);
-          const maxPage = Math.max(0, track.children.length - slidesPerView());
-          Array.from(dots.children).forEach((d,i)=> d.setAttribute('aria-current', i===page? 'true':'false'));
-          prev.disabled = (page<=0);
-          next.disabled = (page>=maxPage);
+        var current = 0;
+        var scrollTimer = null;
+
+        function updateDots() {
+          for (var k = 0; k < dots.length; k++) {
+            dots[k].setAttribute('aria-current', k === current ? 'true' : 'false');
+          }
         }
 
-        function buildDots(){
-          dots.innerHTML = '';
-          const pages = Math.max(1, track.children.length - slidesPerView() + 1);
-          for(let i=0;i<pages;i++){
-            const b = document.createElement('button'); b.type='button'; b.className='shop-dot'; b.setAttribute('aria-label',`Go to slide ${i+1}`);
-            b.addEventListener('click', ()=> track.scrollTo({left: i*slideWidth(), behavior:'smooth'}));
-            dots.appendChild(b);
-          }
+        function goTo(index) {
+          if (!slides.length) return;
+          var count = slides.length;
+          if (index < 0) index = count - 1;
+          if (index >= count) index = 0;
+          current = index;
+          slides[current].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
           updateDots();
         }
 
-        prev.addEventListener('click', ()=> track.scrollBy({left: -slideWidth(), behavior:'smooth'}));
-        next.addEventListener('click', ()=> track.scrollBy({left:  slideWidth(), behavior:'smooth'}));
-        track.addEventListener('scroll', ()=> { clearTimeout(track._t); track._t=setTimeout(updateDots, 50); });
-        track.addEventListener('keydown', (e)=>{ if(e.key==='ArrowRight'){ e.preventDefault(); next.click(); } if(e.key==='ArrowLeft'){ e.preventDefault(); prev.click(); } });
-        window.addEventListener('resize', buildDots);
-        document.addEventListener('visibilitychange', ()=> { if(document.visibilityState==='visible') buildDots(); });
+        prevBtn.addEventListener('click', function () {
+          goTo(current - 1);
+        });
 
-        // Init
-        buildDots();
-        updateDots();
+        nextBtn.addEventListener('click', function () {
+          goTo(current + 1);
+        });
 
-        return { buildDots, updateDots };
+        track.addEventListener('scroll', function () {
+          if (scrollTimer) window.clearTimeout(scrollTimer);
+          scrollTimer = window.setTimeout(function () {
+            var scrollLeft = track.scrollLeft;
+            var bestIndex = 0;
+            var bestDist = Infinity;
+            for (var i = 0; i < slides.length; i++) {
+              var dist = Math.abs(slides[i].offsetLeft - scrollLeft);
+              if (dist < bestDist) {
+                bestDist = dist;
+                bestIndex = i;
+              }
+            }
+            current = bestIndex;
+            updateDots();
+          }, 80);
+        });
+
+        // Initial state
+        goTo(0);
       }
 
-      /* ------------- Currency helper (shop only) ------------- */
-      function moneyGBP(n){ try { return new Intl.NumberFormat(undefined,{style:'currency',currency:'GBP'}).format(n); } catch { return '£' + (Math.round(n*100)/100).toFixed(2); } }
+      window.addEventListener('DOMContentLoaded', function () {
+        initCarousel({
+          trackId: 'shopTrack',
+          dotsId: 'shopDots',
+          prevId: 'shopPrev',
+          nextId: 'shopNext',
+          items: SHOP_PRODUCTS,
+          render: renderProductSlide
+        });
 
-      /* ------------- Add-to-cart delegation (optional) ------------- */
-      document.addEventListener('click', (e)=>{
-        const btn = e.target.closest('button[data-action="add"]');
-        if(!btn) return;
-        const card = btn.closest('[data-product-id]');
-        const id = card?.dataset.productId;
-        const product = SHOP_PRODUCTS.find(p=>p.id===id);
-        if(window.handleAddToCart){ window.handleAddToCart(product); }
-        else { alert(`${product?.title || 'Item'} added to cart (demo). Hook this up to your cart logic.`); }
+        initCarousel({
+          trackId: 'learnTrack',
+          dotsId: 'learnDots',
+          prevId: 'learnPrev',
+          nextId: 'learnNext',
+          items: LEARN_ITEMS,
+          render: renderInfoSlide
+        });
+
+        initCarousel({
+          trackId: 'eventsTrack',
+          dotsId: 'eventsDots',
+          prevId: 'eventsPrev',
+          nextId: 'eventsNext',
+          items: EVENTS_ITEMS,
+          render: renderInfoSlide
+        });
       });
+    })();
+  </script>
 
-      /* ------------- Boot all carousels ------------- */
-      createCarousel({ trackId:'shopTrack',   dotsId:'shopDots',   prevId:'shopPrev',   nextId:'shopNext',   items: SHOP_PRODUCTS, render: renderShopCard,  idPrefix:'shop'   });
-      createCarousel({ trackId:'learnTrack',  dotsId:'learnDots',  prevId:'learnPrev',  nextId:'learnNext',  items: LEARN_ITEMS,  render: renderInfoCard,  idPrefix:'learn'  });
-      createCarousel({ trackId:'eventsTrack', dotsId:'eventsDots', prevId:'eventsPrev', nextId:'eventsNext', items: EVENTS_ITEMS, render: renderInfoCard,  idPrefix:'events' });
+  <!-- Force page to start at top on refresh & set year (no document.write) -->
+  <script>
+    // Disable automatic scroll restoration
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
 
-      // AUTOPLAY purposely not included
-    </script>
-  </body>
+    // Always scroll to top after full load + set copyright year
+    window.addEventListener('load', function () {
+      window.scrollTo(0, 0);
+
+      var yearSpan = document.getElementById('copyrightYear');
+      if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+      }
+    });
+  </script>
+</body>
+
 </html>
