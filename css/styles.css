@@ -13263,6 +13263,8 @@ body {
 /* Default: just a normal padded section */
 .vh-section {
   box-sizing: border-box;
+  padding-top: var(--section-pad);
+  padding-bottom: var(--section-pad);
 }
 
 /* Only on tall viewports do we make sections fill the screen and center them */
@@ -13319,3 +13321,9 @@ body {
   /* keep icon centered */
 }
 
+.masthead {
+  padding-top: 0rem;
+  padding-bottom: 11rem;
+  margin-top: 0%;
+  margin-bottom: 0%;
+}
