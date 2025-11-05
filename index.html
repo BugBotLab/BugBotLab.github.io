@@ -40,7 +40,7 @@
       box-shadow: 0 .25rem .75rem rgba(0, 0, 0, 0.12);
     }
 
-    /* (Unused for now, harmless) */
+    /* Optional masthead tweaks for tall screens */
     .masthead.vh-section {
       padding-top: 2rem;
       padding-bottom: 2rem;
@@ -383,13 +383,21 @@
           }
         }
 
+        // 🔧 FIXED: scroll only the track horizontally, not the whole page
         function goTo(index) {
           if (!slides.length) return;
           var count = slides.length;
           if (index < 0) index = count - 1;
           if (index >= count) index = 0;
           current = index;
-          slides[current].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+
+          var targetLeft = slides[current].offsetLeft;
+          if (typeof track.scrollTo === 'function') {
+            track.scrollTo({ left: targetLeft, behavior: 'smooth' });
+          } else {
+            track.scrollLeft = targetLeft;
+          }
+
           updateDots();
         }
 
@@ -491,7 +499,6 @@
         var MOBILE_BREAKPOINT = 992;
 
         function getNavHeight() {
-          // Use CSS var --nav-h so open mobile menu height does not break the offset
           try {
             var root = document.documentElement;
             if (root) {
@@ -503,9 +510,7 @@
                 }
               }
             }
-          } catch (e) {
-            // ignore and fall back
-          }
+          } catch (e) { }
           return nav.offsetHeight || 0;
         }
 

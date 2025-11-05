@@ -92,7 +92,7 @@
 
 @media (prefers-reduced-motion: no-preference) {
   :root {
-    scroll-behavior: smooth;
+   /* scroll-behavior: smooth; */
   }
 }
 
@@ -13131,7 +13131,7 @@ body {
   gap: var(--shop-gap);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
+  /*scroll-behavior: smooth;*/
   padding: .25rem 0;
 }
 
