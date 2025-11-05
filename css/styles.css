@@ -13261,22 +13261,32 @@ body {
 /* ===== Section layout with optional "full-height" on tall screens ===== */
 
 /* Default: just a normal padded section */
+/* --- Stop full-height + vertical-centering on sections --- */
+
 .vh-section {
   box-sizing: border-box;
-  padding-top: var(--section-pad);
-  padding-bottom: var(--section-pad);
+  padding-top: 6rem;
+  padding-bottom: 6rem;
 }
 
-/* Only on tall viewports do we make sections fill the screen and center them */
+/* On tall screens, keep the same padding but DO NOT center vertically */
 @media (min-height: 720px) {
   .vh-section {
-    min-height: calc(100vh - var(--nav-h));
-    min-height: calc(100dvh - var(--nav-h));
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    min-height: auto;
+    height: auto;
+    display: block;           /* no flex centering */
+    align-items: flex-start;
+    justify-content: flex-start;
   }
 }
+
+@media (min-width: 992px) {
+  .vh-section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
 
 /* About cards */
 .about-card {
@@ -13321,9 +13331,9 @@ body {
   /* keep icon centered */
 }
 
-.masthead {
-  padding-top: 0rem;
-  padding-bottom: 11rem;
-  margin-top: 0%;
-  margin-bottom: 0%;
+
+header .container,
+section .container {
+  max-width: 1100px;
+  min-height: 100vh;
 }

@@ -19,7 +19,11 @@
     rel="stylesheet" />
   <!-- Core theme CSS (includes Bootstrap + your custom styles) -->
   <link href="css/styles.css" rel="stylesheet" />
-
+  <script
+  type="text/javascript"
+  async
+  src="https://static.klaviyo.com/onsite/js/Wpx3d9/klaviyo.js">
+</script>
   <style>
     /* NAVBAR FADE-IN BACKGROUND (desktop only; JS controls opacity) */
     #mainNav {
@@ -33,7 +37,7 @@
       box-shadow: 0 .25rem .75rem rgba(0, 0, 0, 0.12);
     }
 
-    /* Make hero sit closer to the top (less padding, no vertical centering) */
+    /* (Unused for now, harmless) */
     .masthead.vh-section {
       padding-top: 2rem;
       padding-bottom: 2rem;
@@ -41,7 +45,7 @@
 
     @media (min-height: 720px) {
       .masthead.vh-section {
-        align-items: flex-start; /* override vh-section centering for hero only */
+        align-items: flex-start;
       }
     }
   </style>
@@ -71,13 +75,12 @@
   </nav>
 
   <!-- Masthead / Hero -->
-  <header class="masthead">
+  <header class="masthead vh-section">
     <div class="container px-4 px-lg-5 h-100">
-      <!-- CHANGED: align-items-center -> align-items-start -->
       <div class="row gx-4 gx-lg-5 h-100 align-items-start justify-content-center text-center">
         <div class="col-lg-10 align-self-end">
           <div class="d-flex justify-content-center">
-            <div class="text-center">
+            <div class="text-center" style="padding-top: 20%; padding-bottom:10% ;">
               <img src="assets/img/hozLog.svg" alt="BugBotLab Logo" class="logo-img" />
               <h2 id="heroTitle" class="mx-auto mt-3 mb-3" style="font-size: clamp(2rem, 5vw, 3rem);">
                 Build tiny <strong>AI</strong> robots.
@@ -101,7 +104,7 @@
   <section class="about-section text-center vh-section" id="about">
     <div class="container px-4 px-lg-5">
       <div class="row gx-4 gx-lg-5 justify-content-center">
-        <div class="col-lg-9" style="padding-bottom: 0px; margin: 0px;">
+        <div class="col-lg-9" style="padding-top:0%;padding-bottom: 0px; margin: 0px;">
           <img src="assets/img/BasicLogo.svg" alt="BugBotLab Logo" style="width:160px;" />
           <p class="section-label mt-4" style="font-size: x-large;padding-bottom: 0%;margin-bottom: 5%;">About</p>
           <h2 class="mb-3">Where tiny robots teach big ideas.</h2>
@@ -425,7 +428,7 @@
         goTo(0);
       }
 
-      // ---- Sync CSS --nav-h with actual navbar height (optional; safe to keep) ----
+      // ---- Sync CSS --nav-h with actual navbar height ----
       function syncNavHeightVar() {
         var root = document.documentElement;
         var nav = document.getElementById('mainNav');
@@ -493,6 +496,21 @@
         var MOBILE_BREAKPOINT = 992;
 
         function getNavHeight() {
+          // Use CSS var --nav-h so open mobile menu height does not break the offset
+          try {
+            var root = document.documentElement;
+            if (root) {
+              var v = getComputedStyle(root).getPropertyValue('--nav-h');
+              if (v) {
+                var num = parseFloat(v);
+                if (!isNaN(num) && num > 0) {
+                  return num;
+                }
+              }
+            }
+          } catch (e) {
+            // ignore and fall back
+          }
           return nav.offsetHeight || 0;
         }
 
@@ -508,7 +526,8 @@
             if (href === '#page-top') {
               e.preventDefault();
 
-              if (navbarCollapse && window.innerWidth < MOBILE_BREAKPOINT && navbarCollapse.classList.contains('show')) {
+              if (navbarCollapse && window.innerWidth < MOBILE_BREAKPOINT &&
+                navbarCollapse.classList.contains('show')) {
                 var bsCollapseTop = bootstrap.Collapse.getInstance(navbarCollapse);
                 if (bsCollapseTop) {
                   bsCollapseTop.hide();
@@ -524,7 +543,8 @@
 
             e.preventDefault();
 
-            if (navbarCollapse && window.innerWidth < MOBILE_BREAKPOINT && navbarCollapse.classList.contains('show')) {
+            if (navbarCollapse && window.innerWidth < MOBILE_BREAKPOINT &&
+              navbarCollapse.classList.contains('show')) {
               var bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
               if (bsCollapse) {
                 bsCollapse.hide();
@@ -584,6 +604,50 @@
         if (yearSpan) {
           yearSpan.textContent = new Date().getFullYear();
         }
+      });
+    })();
+  </script>
+
+  <!-- Scroll position save/restore on reload/back -->
+  <script>
+    (function () {
+      var storageKey = 'scroll-pos:' + window.location.pathname + window.location.search;
+
+      function saveScrollPos() {
+        try {
+          var y = window.scrollY || window.pageYOffset || 0;
+          sessionStorage.setItem(storageKey, String(y));
+        } catch (e) { }
+      }
+
+      window.addEventListener('beforeunload', saveScrollPos);
+      window.addEventListener('pagehide', saveScrollPos);
+
+      window.addEventListener('load', function () {
+        try {
+          var navType = null;
+
+          if (performance && performance.getEntriesByType) {
+            var entries = performance.getEntriesByType('navigation');
+            if (entries && entries[0]) {
+              navType = entries[0].type; // 'navigate', 'reload', 'back_forward'
+            }
+          } else if (performance && performance.navigation) {
+            var t = performance.navigation.type;
+            if (t === 1) navType = 'reload';
+            else if (t === 2) navType = 'back_forward';
+          }
+
+          if (navType === 'reload' || navType === 'back_forward') {
+            var saved = sessionStorage.getItem(storageKey);
+            if (saved != null) {
+              var y = parseFloat(saved);
+              if (!isNaN(y)) {
+                window.scrollTo(0, y);
+              }
+            }
+          }
+        } catch (e) { }
       });
     })();
   </script>
