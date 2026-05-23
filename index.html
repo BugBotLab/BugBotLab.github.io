@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description"
-    content="Build tiny AI robots. Shop kits, AI-ready control boards, and tutorials, and join in-person robotics events and competitions." />
+    content="The BugBot is a tiny four-legged robot with a camera and an AI-ready brain that you build and code yourself. Join the waitlist for launch news and build updates." />
   <meta name="author" content="BugBotLab" />
   <title>BugBotLab — Build tiny AI robots.</title>
 
@@ -20,8 +20,6 @@
   <!-- Core theme CSS (includes Bootstrap + your custom styles) -->
   <link href="css/styles.css" rel="stylesheet" />
 
-
-
   <style>
     /* NAVBAR FADE-IN BACKGROUND (desktop only; JS controls opacity) */
     #mainNav {
@@ -35,15 +33,577 @@
       box-shadow: 0 .25rem .75rem rgba(0, 0, 0, 0.12);
     }
 
-    /* Optional masthead tweaks for tall screens */
-    .masthead.vh-section {
-      padding-top: 2rem;
-      padding-bottom: 2rem;
+    /* Full-screen sections — each one fills the browser window; content vertically centred.
+       Hero is shortened so the proof strip stays in the first viewport. */
+    .masthead {
+      height: auto !important;
+      min-height: calc(100vh - 140px) !important;
+      display: flex !important;
+      flex-direction: column;
+      justify-content: center;
     }
 
-    @media (min-height: 720px) {
-      .masthead.vh-section {
-        align-items: flex-start;
+    .vh-section {
+      height: auto !important;
+      min-height: 100vh !important;
+      display: flex !important;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Kill the theme's full-height rule on containers / the proof strip (which stays thin) */
+    .container,
+    .proof-strip,
+    .masthead .row {
+      height: auto !important;
+      min-height: 0 !important;
+    }
+
+    .masthead {
+      padding: 5rem 0 1rem;
+    }
+
+    @media (min-width: 992px) {
+      .masthead {
+        padding: 5.5rem 0 1rem;
+      }
+    }
+
+    .masthead h1.hero-title {
+      letter-spacing: normal;
+      background: none;
+      -webkit-text-fill-color: currentColor;
+      color: #2e2e2e;
+      font-size: clamp(1.6rem, 3.4vw, 2.6rem);
+      line-height: 1.15;
+      max-width: none;
+      font-weight: 800;
+    }
+
+    .hero-img,
+    .hero-video {
+      width: 100%;
+      max-width: 360px;
+      height: auto;
+      margin: 0 auto;
+      display: block;
+      border-radius: 1rem;
+      box-shadow: 0 .75rem 2rem rgba(0, 0, 0, .14);
+    }
+
+    .hero-video {
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      background: #f4f8f1;
+    }
+
+    .hero-form-note {
+      font-weight: 700;
+      color: #2e2e2e;
+      margin-bottom: .75rem;
+    }
+
+    /* SOCIAL PROOF STRIP */
+    .proof-strip {
+      background: #2e2e2e;
+      padding: 1.75rem 0;
+    }
+
+    .proof-items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem 2.75rem;
+    }
+
+    .proof-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #fff;
+    }
+
+    .proof-num {
+      font-size: 1.6rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .proof-label {
+      font-size: .78rem;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: #b9c9b3;
+      margin-top: .3rem;
+    }
+
+    .proof-tagline {
+      text-align: center;
+      color: #b9c9b3;
+      font-size: .85rem;
+      margin: .9rem 0 0;
+    }
+
+    .proof-tagline a {
+      color: #fff;
+    }
+
+    /* VIDEO SHOWCASE */
+    .video-frame {
+      max-width: 900px;
+      margin: 0 auto;
+      aspect-ratio: 16 / 9;
+    }
+
+    .video-frame iframe,
+    .video-frame video {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 1rem;
+      display: block;
+    }
+
+    .video-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      border: 2px dashed #A2C594;
+      border-radius: 1rem;
+      background: #f4f8f1;
+      color: #5b6b73;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .video-placeholder i {
+      font-size: 2.75rem;
+      color: #A2C594;
+      margin-bottom: .75rem;
+    }
+
+    /* PRODUCT SECTIONS (robot + board) */
+    .product-img {
+      width: 100%;
+      max-width: 420px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border-radius: 1rem;
+      box-shadow: 0 .75rem 2rem rgba(0, 0, 0, .14);
+    }
+
+    .dev-badge {
+      display: inline-block;
+      background: #2e2e2e;
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .35rem .8rem;
+      border-radius: 9999px;
+      margin-bottom: 1rem;
+    }
+
+    .board-feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.25rem 0;
+    }
+
+    .board-feature-list li {
+      padding: .35rem 0;
+      color: #333;
+    }
+
+    .board-feature-list li i {
+      color: #85B373;
+      margin-right: .6rem;
+    }
+
+    /* CTA BAND */
+    .cta-band {
+      background-color: rgba(191, 215, 181, 1);
+    }
+
+    /* MailerLite waitlist form — styled to match the site */
+    #mlb2-41646750 {
+      max-width: 420px;
+      margin: 0 auto;
+      font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    /* Left-align the form on desktop (two-column hero); keep it centred when stacked */
+    @media (min-width: 992px) {
+      #mlb2-41646750 {
+        margin-left: 0;
+      }
+    }
+
+    #mlb2-41646750 .ml-form-embedWrapper {
+      background: transparent;
+      border: 0;
+    }
+
+    #mlb2-41646750 .ml-form-fieldRow {
+      margin-bottom: 12px;
+    }
+
+    #mlb2-41646750 input[type="email"] {
+      width: 100%;
+      padding: 12px 14px;
+      font-size: 1rem;
+      color: #2e2e2e;
+      border: 1px solid #cfd8cf;
+      border-radius: .5rem;
+      box-sizing: border-box;
+    }
+
+    #mlb2-41646750 input[type="email"]:focus {
+      outline: none;
+      border-color: #A2C594;
+      box-shadow: 0 0 0 .2rem rgba(162, 197, 148, .4);
+    }
+
+    #mlb2-41646750 .ml-form-embedPermissions p,
+    #mlb2-41646750 .ml-form-checkboxRow .label-description p {
+      font-size: .8rem;
+      color: #5b6b73;
+      margin: 0;
+    }
+
+    #mlb2-41646750 .ml-form-checkboxRow {
+      margin: 10px 0 16px;
+    }
+
+    #mlb2-41646750 .ml-form-checkboxRow label {
+      display: flex;
+      gap: .5rem;
+      align-items: flex-start;
+      justify-content: center;
+      margin: 0;
+      cursor: pointer;
+    }
+
+    #mlb2-41646750 button.primary {
+      width: 100%;
+      padding: 12px 18px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #2e2e2e;
+      background-color: #A2C594;
+      border: 2px solid #000;
+      border-radius: .5rem;
+      cursor: pointer;
+      transition: background-color .2s ease;
+    }
+
+    #mlb2-41646750 button.primary:hover {
+      background-color: #85B373;
+    }
+
+    #mlb2-41646750 button.loading {
+      width: 100%;
+      padding: 12px 18px;
+      border: 2px solid #000;
+      border-radius: .5rem;
+      background-color: #A2C594;
+    }
+
+    #mlb2-41646750 .ml-form-embedSubmitLoad {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+    }
+
+    #mlb2-41646750 .ml-form-embedSubmitLoad:after {
+      content: " ";
+      display: block;
+      width: 14px;
+      height: 14px;
+      margin: 2px auto;
+      border-radius: 50%;
+      border: 3px solid #2e2e2e;
+      border-color: #2e2e2e transparent #2e2e2e transparent;
+      animation: ml-spin 1s linear infinite;
+    }
+
+    @keyframes ml-spin {
+      to { transform: rotate(360deg); }
+    }
+
+    #mlb2-41646750 .ml-form-successContent h4 {
+      color: #2e2e2e;
+      margin-bottom: .5rem;
+    }
+
+    #mlb2-41646750 .ml-form-successContent p {
+      color: #5b6b73;
+      margin: 0;
+    }
+
+    #mlb2-41646750 .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
+    /* FEATURES CAROUSEL */
+    #featuresCarousel {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding-bottom: 3rem;
+    }
+
+    #featuresCarousel .carousel-item {
+      padding: 0 2rem;
+    }
+
+    @media (max-width: 768px) {
+      #featuresCarousel .carousel-item {
+        padding: 0 .5rem;
+      }
+    }
+
+    .feature-media {
+      aspect-ratio: 16 / 9;
+      border-radius: 1rem;
+      overflow: hidden;
+      background: #f4f8f1;
+    }
+
+    .feature-media video,
+    .feature-media iframe {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border: 0;
+    }
+
+    .feature-text h3 {
+      font-weight: 800;
+      color: #2e2e2e;
+    }
+
+    #featuresCarousel .carousel-control-prev,
+    #featuresCarousel .carousel-control-next {
+      width: 3rem;
+      opacity: 0.6;
+    }
+
+    #featuresCarousel .carousel-control-prev:hover,
+    #featuresCarousel .carousel-control-next:hover {
+      opacity: 1;
+    }
+
+    #featuresCarousel .carousel-indicators {
+      bottom: -.5rem;
+      margin-bottom: 0;
+    }
+
+    #featuresCarousel .carousel-indicators [data-bs-target] {
+      background-color: #2e2e2e;
+      opacity: 0.25;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: none;
+      margin: 0 6px;
+    }
+
+    #featuresCarousel .carousel-indicators .active {
+      opacity: 1;
+    }
+
+    /* AUDIENCE PITCH */
+    .audience-card {
+      background: #fff;
+      border: 1px solid #e0ecdc;
+      border-radius: 1rem;
+      padding: 2rem;
+      height: 100%;
+      box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .06);
+    }
+
+    .audience-badge {
+      display: inline-block;
+      background: #A2C594;
+      color: #2e2e2e;
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: .35rem .8rem;
+      border-radius: 9999px;
+      margin-bottom: 1rem;
+    }
+
+    .audience-card h3 {
+      font-weight: 800;
+      color: #2e2e2e;
+    }
+
+    .audience-list {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 0;
+    }
+
+    .audience-list li {
+      display: flex;
+      gap: .65rem;
+      align-items: flex-start;
+      padding: .4rem 0;
+      color: #333;
+      line-height: 1.45;
+    }
+
+    .audience-list li i {
+      color: #85B373;
+      margin-top: .3rem;
+      flex-shrink: 0;
+    }
+
+    /* BOARD POINTS (open hardware / open code / modular) */
+    .board-points {
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem 0;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .board-point {
+      display: flex;
+      gap: .9rem;
+      align-items: flex-start;
+    }
+
+    .board-point i {
+      color: #85B373;
+      font-size: 1.25rem;
+      margin-top: .2rem;
+      width: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .board-point strong {
+      display: block;
+      color: #2e2e2e;
+      font-size: 1rem;
+      margin-bottom: .15rem;
+    }
+
+    .board-point .desc {
+      color: #5b6b73;
+      font-size: .9rem;
+      line-height: 1.4;
+    }
+
+    /* FAQ ACCORDION */
+    .faq-accordion .accordion-item {
+      border: 1px solid #e0ecdc;
+      border-radius: .6rem !important;
+      margin-bottom: .65rem;
+      background: #fff;
+    }
+
+    .faq-accordion .accordion-button {
+      border-radius: .6rem !important;
+    }
+
+    .faq-accordion .accordion-button:not(.collapsed) {
+      border-bottom-left-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+    }
+
+    .faq-accordion .accordion-collapse {
+      transition: height .35s ease-out;
+      will-change: height;
+    }
+
+    /* Stop the FAQ section re-centring its content every frame as items expand */
+    #faq {
+      justify-content: flex-start !important;
+      padding-top: 6rem;
+      padding-bottom: 4rem;
+    }
+
+    .faq-accordion .accordion-button {
+      font-weight: 700;
+      color: #2e2e2e;
+      background: #fff;
+      padding: 1.1rem 1.25rem;
+    }
+
+    .faq-accordion .accordion-button:not(.collapsed) {
+      background-color: rgba(162, 197, 148, 0.14);
+      color: #2e2e2e;
+      box-shadow: none;
+    }
+
+    .faq-accordion .accordion-button:focus {
+      border-color: #A2C594;
+      box-shadow: 0 0 0 .2rem rgba(162, 197, 148, .25);
+    }
+
+    .faq-accordion .accordion-button::after {
+      filter: grayscale(100%) brightness(.4);
+    }
+
+    .faq-accordion .accordion-body {
+      color: #5b6b73;
+      padding: .25rem 1.25rem 1.25rem;
+      line-height: 1.55;
+    }
+
+    /* SPEC SHEET */
+    .spec-sheet {
+      max-width: 760px;
+      margin: 0 auto;
+      border-top: 1px solid #e2e2e2;
+    }
+
+    .spec-row {
+      display: flex;
+      padding: 1rem .25rem;
+      border-bottom: 1px solid #e2e2e2;
+      gap: 1.5rem;
+    }
+
+    .spec-label {
+      flex: 0 0 36%;
+      font-weight: 700;
+      color: #2e2e2e;
+      font-size: .95rem;
+      letter-spacing: .01em;
+    }
+
+    .spec-value {
+      flex: 1;
+      color: #5b6b73;
+      font-size: .95rem;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 576px) {
+      .spec-row {
+        flex-direction: column;
+        gap: .25rem;
+      }
+
+      .spec-label {
+        flex: 1;
       }
     }
   </style>
@@ -62,169 +622,545 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="https://store.bugbotlab.com/collections/all">Store</a></li>
-          <li class="nav-item"><a class="nav-link" href="#learn">Learn</a></li>
-          <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
-          <li class="nav-item"><a class="nav-link" href="https://store.bugbotlab.com/pages/contact">Contact</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Social</a></li>
+          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#board">The Board</a></li>
+          <li class="nav-item"><a class="nav-link" href="#specs">Specs</a></li>
+          <li class="nav-item"><a class="nav-link" href="#story">Story</a></li>
+          <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+          <li class="nav-item"><a class="nav-link" href="#page-top">Join Waitlist</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Masthead / Hero -->
-  <header class="masthead vh-section">
-    <div class="container px-4 px-lg-5 h-100">
-      <div class="row gx-4 gx-lg-5 h-100 align-items-start justify-content-center text-center">
-        <div class="col-lg-10 align-self-end">
-          <div class="d-flex justify-content-center">
-            <div class="text-center" style="padding-top: 20%; padding-bottom:10%;">
-              <img src="assets/img/hozLog.svg" alt="BugBotLab Logo" class="logo-img" />
-              <h2 id="heroTitle" class="mx-auto mt-3 mb-3" style="font-size: clamp(2rem, 5vw, 3rem);">
-                Build tiny <strong>AI</strong> robots.
-              </h2>
-              <p class="hero-sub mb-4">
-                Kits, AI-ready control boards, and hands-on lessons for computer vision, motion, and haptics.
-              </p>
-              <div class="d-flex gap-2 justify-content-center flex-wrap" style="padding-top: 40px;">
-                <a class="btn btn-primary btn-lg btn-cta" href="https://store.bugbotlab.com/collections/all"><b>Shop for Kits</b></a>
-                <a class="btn btn-outline-dark btn-lg btn-cta" href="#learn"><b>Start Free Course</b></a>
-                <a class="btn btn-outline-secondary btn-lg btn-cta" href="#events"><b>Find Events</b></a>
+  <!-- Hero -->
+  <header class="masthead">
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 align-items-center">
+
+        <!-- Hero copy + signup form -->
+        <div class="col-lg-6 text-center text-lg-start mb-5 mb-lg-0">
+          <h1 class="hero-title mb-3">
+            Palm&#8209;sized. Omnidirectional. AI&#8209;powered. <strong>Yours&nbsp;to&nbsp;build.</strong>
+          </h1>
+          <p class="hero-sub mb-4">
+            Four vibrating legs, a camera eye, a brain you can hack. Open firmware, modular by
+            design — small enough for your desk, or every desk in a classroom.
+          </p>
+          <p class="hero-form-note">Be first. Launch news + build updates.</p>
+
+          <!-- MailerLite waitlist form (account 2370876 / form 41646750) -->
+          <div id="mlb2-41646750" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-41646750">
+            <div class="ml-form-align-center">
+              <div class="ml-form-embedWrapper embedForm">
+                <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+                  <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2370876/forms/188162764222498108/subscribe" data-code="" method="post" target="_blank">
+                    <div class="ml-form-formContent">
+                      <div class="ml-form-fieldRow ml-last-item">
+                        <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                          <input aria-label="email" aria-required="true" type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="Your email address" autocomplete="email">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="ml-form-embedPermissions">
+                      <div class="ml-form-embedPermissionsContent default privacy-policy">
+                        <p>No spam — just launch news. You can unsubscribe anytime.</p>
+                      </div>
+                    </div>
+                    <div class="ml-form-checkboxRow ml-validate-required">
+                      <label class="checkbox">
+                        <input type="checkbox">
+                        <div class="label-description">
+                          <p>Opt in to receive news and updates.</p>
+                        </div>
+                      </label>
+                    </div>
+                    <input type="hidden" name="ml-submit" value="1">
+                    <div class="ml-form-embedSubmit">
+                      <button type="submit" class="primary">Join the Waitlist</button>
+                      <button disabled="disabled" style="display: none;" type="button" class="loading">
+                        <div class="ml-form-embedSubmitLoad"></div>
+                        <span class="sr-only">Loading...</span>
+                      </button>
+                    </div>
+                    <input type="hidden" name="anticsrf" value="true">
+                  </form>
+                </div>
+                <div class="ml-form-successBody row-success" style="display: none;">
+                  <div class="ml-form-successContent">
+                    <h4>Almost there — check your inbox</h4>
+                    <p>Click the confirmation link we just emailed you, and you'll be first to hear when the BugBot launches.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+          <script>
+            function ml_webform_success_41646750() {
+              var $ = ml_jQuery || jQuery;
+              $('.ml-subscribe-form-41646750 .row-success').show();
+              $('.ml-subscribe-form-41646750 .row-form').hide();
+            }
+          </script>
+          <script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b" type="text/javascript"></script>
+          <script>
+            fetch("https://assets.mailerlite.com/jsonp/2370876/forms/188162764222498108/takel");
+          </script>
         </div>
+
+        <!-- Hero visual -->
+        <div class="col-lg-6 text-center">
+          <video class="hero-video" autoplay muted loop playsinline preload="metadata"
+            aria-label="The BugBot in motion">
+            <source src="assets/video/bugbot-hero.mp4" type="video/mp4">
+          </video>
+        </div>
+
       </div>
     </div>
   </header>
 
-  <!-- About -->
-  <section class="about-section text-center vh-section" id="about">
+  <!-- Social proof -->
+  <section class="proof-strip" id="proof">
     <div class="container px-4 px-lg-5">
+      <div class="proof-items">
+        <div class="proof-item">
+          <span class="proof-num">100,000+</span>
+          <span class="proof-label">Views</span>
+        </div>
+        <div class="proof-item">
+          <span class="proof-num">6,000+</span>
+          <span class="proof-label">Likes</span>
+        </div>
+        <div class="proof-item">
+          <span class="proof-num">1,800+</span>
+          <span class="proof-label">Following the build</span>
+        </div>
+      </div>
+      <p class="proof-tagline">
+        Built in the open — follow on
+        <a href="https://www.instagram.com/bugbotlab/">Instagram</a> ·
+        code on <a href="https://github.com/BugBotLab">GitHub</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- Video showcase -->
+  <section class="vh-section" id="features">
+    <div class="container px-4 px-lg-5">
+      <div class="row justify-content-center text-center mb-4">
+        <div class="col-lg-8">
+          <p class="section-label">What it does</p>
+          <h2 class="mb-3">A real robot. Real AI. In your hand.</h2>
+          <p class="text-muted">Three things make the BugBot different — and you can see all three.</p>
+        </div>
+      </div>
+
+      <div id="featuresCarousel" class="carousel slide carousel-dark">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#featuresCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="How it moves"></button>
+          <button type="button" data-bs-target="#featuresCarousel" data-bs-slide-to="1" aria-label="How it sees"></button>
+          <button type="button" data-bs-target="#featuresCarousel" data-bs-slide-to="2" aria-label="How it thinks"></button>
+        </div>
+
+        <div class="carousel-inner">
+
+          <!-- Slide 1: How it moves -->
+          <div class="carousel-item active">
+            <div class="row gx-4 gx-lg-5 align-items-center">
+              <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="feature-media">
+                  <video autoplay muted loop playsinline preload="metadata"
+                    aria-label="The BugBot scurrying">
+                    <source src="assets/video/bugbot-move.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              <div class="col-lg-6 feature-text">
+                <h3 class="mb-3">How it moves</h3>
+                <p class="text-black-50">
+                  Four vibrating legs let the BugBot scurry, turn and strafe in any direction —
+                  no big motors, no spinning wheels, just clever vibration. Truly omnidirectional
+                  in a palm-sized package.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2: How it sees -->
+          <div class="carousel-item">
+            <div class="row gx-4 gx-lg-5 align-items-center">
+              <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="feature-media">
+                  <video autoplay muted loop playsinline preload="metadata"
+                    aria-label="The BugBot's camera in action">
+                    <source src="assets/video/bugbot-see.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              <div class="col-lg-6 feature-text">
+                <h3 class="mb-3">How it sees</h3>
+                <p class="text-black-50">
+                  An onboard camera <em>and</em> an 8×8 Time-of-Flight depth sensor give the
+                  BugBot real spatial awareness — it can follow colours, spot markers, measure
+                  distance and react to what's in front of it. Real computer vision, on a robot
+                  small enough to hold.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3: How it thinks -->
+          <div class="carousel-item">
+            <div class="row gx-4 gx-lg-5 align-items-center">
+              <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="feature-media">
+                  <video autoplay muted loop playsinline preload="metadata"
+                    aria-label="The BugBot running code">
+                    <source src="assets/video/bugbot-think.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              <div class="col-lg-6 feature-text">
+                <h3 class="mb-3">How it thinks</h3>
+                <p class="text-black-50">
+                  Open firmware on an ESP32-S3 — Wi-Fi, Bluetooth and a microSD slot built in.
+                  Upload your own <strong>TinyML models</strong> and run real machine learning
+                  on-device, write behaviours in Arduino or Python, or fork the firmware and build
+                  something entirely new.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#featuresCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#featuresCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Audience pitch -->
+  <section class="vh-section bg-light" id="audience">
+    <div class="container px-4 px-lg-5">
+      <div class="row justify-content-center text-center mb-5">
+        <div class="col-lg-9">
+          <p class="section-label">Built for</p>
+          <h2 class="mb-3">Makers, students, and the classrooms that need both</h2>
+          <p class="text-muted">One robot, two audiences — and a real reason for each.</p>
+        </div>
+      </div>
+
       <div class="row gx-4 gx-lg-5 justify-content-center">
-        <div class="col-lg-9" style="padding-top:0%;padding-bottom: 0px; margin: 0px;">
-          <img src="assets/img/BasicLogo.svg" alt="BugBotLab Logo" style="width:160px;" />
-          <p class="section-label mt-4" style="font-size: x-large;padding-bottom: 0%;margin-bottom: 5%;">About</p>
-          <h2 class="mb-3">Where tiny robots teach big ideas.</h2>
-          <p class="text-black-50" style="padding-bottom: 40px; margin: 0px;">
-            We believe the best way to learn is by doing. Our AI-ready, bug-inspired robots bring micro-robotics into
-            classrooms, workshops, and homes. From the first servo sweep to on-device vision and gestures, BugBotLab makes
-            STEM learning accessible, exciting, and unforgettable.
-          </p>
-        </div>
-      </div>
-
-      <div class="row gx-4 gx-lg-5 mt-3">
-        <div class="col-md-4 mb-3">
-          <div class="card about-card">
-            <div>
-              <h5 class="mb-2"><strong>Shop</strong></h5>
-              <p class="mb-0">Kits, boards, and parts designed for makers and classrooms.</p>
-            </div>
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <div class="audience-card">
+            <span class="audience-badge">For makers</span>
+            <h3 class="mb-3">A real AI robot, on your desk</h3>
+            <p class="text-black-50">Not a sealed plastic toy. Not a Lego set. A genuine robot you wire, code and modify — with AI vision on a board you can hold.</p>
+            <ul class="audience-list">
+              <li><i class="fas fa-check"></i><span>Open firmware, fully documented hardware — program it, mod it, extend it</span></li>
+              <li><i class="fas fa-check"></i><span>Modular connectors for sensors, cameras and add-ons</span></li>
+              <li><i class="fas fa-check"></i><span>Real engineering — wire it, solder it, code it, and make it yours</span></li>
+              <li><i class="fas fa-check"></i><span>Cheap enough to break, real enough to build something serious</span></li>
+              <li><i class="fas fa-check"></i><span>Upload your own TinyML models — real machine learning, no cloud round-trip</span></li>
+            </ul>
           </div>
         </div>
 
-        <div class="col-md-4 mb-3">
-          <div class="card about-card">
-            <div>
-              <h5 class="mb-2"><strong>Learn</strong></h5>
-              <p class="mb-0">Free tutorials and courses.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-3">
-          <div class="card about-card">
-            <div>
-              <h5 class="mb-2"><strong>Events</strong></h5>
-              <p class="mb-0">Workshops and friendly competitions to level up together.</p>
-            </div>
+        <div class="col-lg-6">
+          <div class="audience-card">
+            <span class="audience-badge">For schools</span>
+            <h3 class="mb-3">One robot per student, not one per team</h3>
+            <p class="text-black-50">Bulky kits force teams of four to six around a single robot. With BugBot's palm size and price, every student gets hands-on time — not 20 minutes of waiting between five-minute turns.</p>
+            <ul class="audience-list">
+              <li><i class="fas fa-check"></i><span>Fits on the desks you already have — no robotics lab required</span></li>
+              <li><i class="fas fa-check"></i><span>Maps cleanly to KS4 and beyond — computing &amp; D&amp;T, electronics, programming, AI/computer vision</span></li>
+              <li><i class="fas fa-check"></i><span>Safe by design — low-power vibration, no spinning wheels</span></li>
+              <li><i class="fas fa-check"></i><span>A classroom set at a fraction of LEGO / VEX pricing</span></li>
+              <li><i class="fas fa-check"></i><span>Lesson plans and teaching materials included with classroom kits</span></li>
+              <li><i class="fas fa-check"></i><span>Real, hands-on engineering — the skills transfer</span></li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Shop -->
-  <section class="projects-section bg-light vh-section" id="shop" style="display: none;">
+  <!-- The BugBot Board -->
+  <section class="vh-section" id="board">
     <div class="container px-4 px-lg-5">
-      <div class="row gx-4 gx-lg-5 justify-content-center mb-4 text-center">
-        <div class="col-lg-8">
-          <p class="section-label">Shop</p>
-          <h2 class="mb-3">Kits &amp; control boards</h2>
-          <p class="text-muted">
-            Kits, boards, and parts designed for makers and classrooms. Everything you need to get from blinking LEDs
-            to tiny robots that see and feel.
+      <div class="row gx-4 gx-lg-5 align-items-center justify-content-center">
+        <div class="col-lg-6 text-center mb-4 mb-lg-0">
+          <img src="assets/img/BugBot%20Board.png" alt="The BugBot Board — a compact robotics control board"
+            class="product-img" />
+        </div>
+        <div class="col-lg-6">
+          <span class="dev-badge">In development</span>
+          <h2 class="mb-3">The BugBot Board</h2>
+          <p class="text-black-50">
+            A compact ESP32-S3 controller designed from scratch for the BugBot — and for whatever
+            else you can imagine. <strong>Open code. Hackable platform.</strong> Every pin and
+            port is fully documented — build with it, code it, extend it freely.
           </p>
+          <p class="text-black-50">
+            <strong>One board, many robots.</strong> All you really need is the BugBot Board. Pair
+            it with motors, sensors and a 3D-printed chassis, and you have the foundation for any
+            small robot you can imagine.
+          </p>
+          <ul class="board-points">
+            <li class="board-point">
+              <i class="fas fa-code-branch"></i>
+              <div><strong>Open source firmware</strong><span class="desc">Arduino, MicroPython or your own — TensorFlow Lite / TinyML supported. Full repo on GitHub.</span></div>
+            </li>
+            <li class="board-point">
+              <i class="fas fa-book-open"></i>
+              <div><strong>Fully documented</strong><span class="desc">Pinout maps, electrical specs and API reference — all public.</span></div>
+            </li>
+            <li class="board-point">
+              <i class="fas fa-puzzle-piece"></i>
+              <div><strong>Modular by design</strong><span class="desc">Plug-in connectors for motors, servos, the camera, ToF depth sensor and IMU.</span></div>
+            </li>
+          </ul>
         </div>
       </div>
-
-      <div class="shop-carousel" role="region" aria-label="Shop carousel">
-        <button class="shop-prev" aria-label="Previous slide" id="shopPrev">‹</button>
-        <ul class="shop-track" id="shopTrack" role="list" tabindex="0"></ul>
-        <button class="shop-next" aria-label="Next slide" id="shopNext">›</button>
-      </div>
-      <div class="shop-dots mt-3" id="shopDots" aria-label="Slides navigation"></div>
     </div>
   </section>
 
-  <!-- Learn -->
-  <section class="projects-section vh-section" id="learn">
+  <!-- Specs -->
+  <section class="vh-section bg-light" id="specs">
     <div class="container px-4 px-lg-5">
-      <div class="row gx-4 gx-lg-5 justify-content-center mb-4 text-center">
-        <div class="col-lg-8">
-          <p class="section-label">Learn</p>
-          <h2 class="mb-3">Free tutorials &amp; courses</h2>
-          <p class="text-muted">
-            Step-by-step lessons that introduce sensing, motion, AI workflows, and debugging — written for real classrooms.
-          </p>
+      <div class="row justify-content-center text-center mb-4">
+        <div class="col-lg-9">
+          <p class="section-label">Specifications</p>
+          <h2 class="mb-3">What's inside</h2>
+          <p class="text-muted">The hardware on the BugBot Board, in one place.</p>
         </div>
       </div>
 
-      <div class="shop-carousel" role="region" aria-label="Learn carousel">
-        <button class="shop-prev" aria-label="Previous slide" id="learnPrev">‹</button>
-        <ul class="shop-track list-unstyled m-0" id="learnTrack" role="list" tabindex="0"></ul>
-        <button class="shop-next" aria-label="Next slide" id="learnNext">›</button>
+      <div class="spec-sheet">
+        <div class="spec-row"><span class="spec-label">Microcontroller</span><span class="spec-value">ESP32-S3 (dual-core, 240 MHz, Wi-Fi + Bluetooth)</span></div>
+        <div class="spec-row"><span class="spec-label">On-device AI</span><span class="spec-value">TensorFlow Lite for Microcontrollers — upload and run your own TinyML models</span></div>
+        <div class="spec-row"><span class="spec-label">Drive</span><span class="spec-value">4 × vibration motors — omnidirectional motion in a palm-sized chassis</span></div>
+        <div class="spec-row"><span class="spec-label">Motor outputs</span><span class="spec-value">4 × DC motor channels (TB6612FNG drivers) + 4 × servo headers</span></div>
+        <div class="spec-row"><span class="spec-label">Vision</span><span class="spec-value">Onboard camera + 8×8 Time-of-Flight depth sensor (64-zone ranging)</span></div>
+        <div class="spec-row"><span class="spec-label">Sensing</span><span class="spec-value">Bosch BNO055 9-axis IMU · microphone connector · I²C sensor port</span></div>
+        <div class="spec-row"><span class="spec-label">Storage</span><span class="spec-value">MicroSD card slot — code, data logging and ML model storage</span></div>
+        <div class="spec-row"><span class="spec-label">Connectivity</span><span class="spec-value">Wi-Fi · Bluetooth · USB-C</span></div>
+        <div class="spec-row"><span class="spec-label">Power</span><span class="spec-value">USB-C charging + onboard battery management (Li-ion / LiPo)</span></div>
+        <div class="spec-row"><span class="spec-label">Dimensions</span><span class="spec-value">~70 × 70 × 70 mm — palm-sized</span></div>
+        <div class="spec-row"><span class="spec-label">Programming</span><span class="spec-value">Scratch · Arduino · MicroPython · ESP-IDF</span></div>
+        <div class="spec-row"><span class="spec-label">Licence</span><span class="spec-value">Open firmware · documented hardware platform — firmware sources on GitHub</span></div>
       </div>
-      <div class="shop-dots mt-3" id="learnDots" aria-label="Slides navigation"></div>
     </div>
   </section>
 
-  <!-- Events -->
-  <section class="projects-section bg-light vh-section" id="events">
+  <!-- Founder story -->
+  <section class="vh-section bg-light" id="story">
     <div class="container px-4 px-lg-5">
-      <div class="row gx-4 gx-lg-5 justify-content-center mb-4 text-center">
+      <div class="row gx-4 gx-lg-5 justify-content-center text-center">
         <div class="col-lg-8">
-          <p class="section-label">Events</p>
-          <h2 class="mb-3">Workshops &amp; challenges</h2>
-          <p class="text-muted">
-            In-person and online events where learners race, debug, and iterate together in a friendly, low-stakes format.
+          <p class="section-label">The Story</p>
+          <h2 class="mb-4">How BugBot started.</h2>
+          <p class="text-black-50">
+            I designed the first BugBot during my engineering PhD, running the university's robotics society.
           </p>
+          <p class="text-black-50">
+            Every year, dozens of new members joined — and <strong>watched</strong>. The big competition robots
+            were too expensive, too dangerous, too few. The experienced few drove. The rest stood around.
+          </p>
+          <p class="text-black-50">
+            Then I read a paper on vibration-driven swarm robots.
+          </p>
+          <p class="text-black-50"><em>What if every member had their own?</em></p>
+          <p class="text-black-50">
+            I designed an inexpensive kit. An afternoon to assemble. Small enough for a desk. Complex
+            enough to teach the real concepts. Now <em>everyone</em> was building, testing and taking part.
+          </p>
+          <p class="text-black-50">
+            That's BugBotLab. Real robotics — learning <em>and</em> competition — on a desk.
+            Every student builds. <strong>Not watches.</strong>
+          </p>
+          <p class="text-black-50">
+            It's <strong>still just me</strong>. Designed, built, coded, filmed. Every prototype and every failure
+            on Instagram. The waitlist is your front-row seat to what comes next.
+          </p>
+          <p style="margin-top: 1.5rem; font-weight: 700; color: #2e2e2e;">— Jerome</p>
         </div>
       </div>
-
-      <div class="shop-carousel" role="region" aria-label="Events carousel">
-        <button class="shop-prev" aria-label="Previous slide" id="eventsPrev">‹</button>
-        <ul class="shop-track list-unstyled m-0" id="eventsTrack" role="list" tabindex="0"></ul>
-        <button class="shop-next" aria-label="Next slide" id="eventsNext">›</button>
-      </div>
-      <div class="shop-dots mt-3" id="eventsDots" aria-label="Slides navigation"></div>
     </div>
   </section>
 
-  <!-- Contact -->
+  <!-- FAQ -->
+  <section class="vh-section" id="faq">
+    <div class="container px-4 px-lg-5">
+      <div class="row justify-content-center text-center mb-4">
+        <div class="col-lg-9">
+          <p class="section-label">FAQ</p>
+          <h2 class="mb-3">Common questions</h2>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+          <div class="accordion faq-accordion" id="faqAccordion">
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">
+                  When can I buy a BugBot?
+                </button>
+              </h3>
+              <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  The BugBot is in final development — final hardware iterations and firmware polish are happening now. <strong>The BugBot Board launches first</strong>, with complete kits to follow later. The exact launch date will be announced to waitlist subscribers first.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                  What do I actually buy at launch?
+                </button>
+              </h3>
+              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  At launch, the <strong>BugBot Board is sold on its own</strong> — the brain of the system. Everything else (3D-printable chassis, motor list, sensor BOM, full build guide) will be free and open on GitHub. You source the additional parts and print the chassis yourself. <strong>Complete plug-and-go kits will follow later</strong> — for now it's the maker route.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                  How much will it cost?
+                </button>
+              </h3>
+              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Pricing is being finalised. The BugBot Board is designed to be affordable enough that an individual maker can pick one up easily — and that classrooms can buy them in volume — at a fraction of the cost of competing robotics platforms. Waitlist subscribers get the launch announcement first.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7" aria-expanded="false" aria-controls="faq7">
+                  How does it actually move? It has no wheels.
+                </button>
+              </h3>
+              <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Correct — no wheels. Each of the four feet sits on a vibration motor with an offset weight inside. When the motor spins, that weight throws the leg in tiny rapid kicks. Drive the four motors at different speeds and the BugBot scurries forward, turns, or strafes in any direction. Same physics as the haptic buzz in your phone, scaled up to walk.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq8" aria-expanded="false" aria-controls="faq8">
+                  What surfaces does it work on? Will it damage them?
+                </button>
+              </h3>
+              <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Anywhere reasonably flat — wood, plastic, hard floors, desks, paper. The feet are designed to grip without marking, so it shouldn't scuff a desk. Very glossy surfaces can get slippery (it loses traction); deep carpet won't catch. If in doubt, stick it on a piece of card — that always works.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq9" aria-expanded="false" aria-controls="faq9">
+                  How does it see depth? Is that a lidar?
+                </button>
+              </h3>
+              <div id="faq9" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Close — it's an <strong>8&times;8 Time-of-Flight sensor</strong>, same family as lidar but much smaller. It pulses infrared light and times the bounce-back across 64 zones, giving the BugBot a low-resolution depth map of what's in front of it. Combined with the camera, that's genuine spatial awareness — measure distance, spot objects, dodge obstacles.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                  Do I need to know how to solder or code?
+                </button>
+              </h3>
+              <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  <strong>Some basic soldering will be needed</strong> at the board-first launch, since you'll be assembling parts you source yourself. Future complete kits will be plug-and-screw. You'll also need access to a <strong>3D printer</strong> (or a print service) for the chassis. For code, the visual <strong>Scratch</strong> editor lets complete beginners write behaviours right away — and <strong>Arduino</strong>, <strong>MicroPython</strong> and on-device <strong>TinyML</strong> are there when you want to go deeper.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">
+                  Is it really open source?
+                </button>
+              </h3>
+              <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  The <strong>firmware is fully open</strong> on GitHub — read it, fork it, modify it. The hardware platform is fully documented: every pin, port and interface, so you can extend it freely with any sensor, motor or module you can think of. The PCB design files themselves remain proprietary — that's how the BugBot stays affordable instead of racing knock-offs to the bottom.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6" aria-expanded="false" aria-controls="faq6">
+                  Can I order multiples for a club or classroom?
+                </button>
+              </h3>
+              <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Yes — you can order multiple BugBot Boards at launch, and the open files mean you can print and assemble chassis pieces in bulk. <strong>Full classroom kits will follow when production scales — pre-printed, pre-assembled, and with lesson plans and teaching materials included</strong> — designed so a teacher can have a robot for <em>every</em> student. Drop a note to <a href="mailto:info@bugbotlab.com">info@bugbotlab.com</a> with your group size and timeline.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Join CTA -->
+  <section class="cta-band vh-section" id="join">
+    <div class="container px-4 px-lg-5 text-center">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <h2 class="mb-3">Be first to get the BugBot</h2>
+          <p class="text-black-50 mb-4">
+            Join the waitlist for launch news, first access at launch, and behind-the-scenes
+            build updates.
+          </p>
+          <a class="btn btn-primary btn-lg btn-cta" href="#page-top"><b>Join the Waitlist</b></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Social -->
   <section class="contact-section vh-section" id="contact" style="background-color: rgba(191, 215, 181, 1);">
     <div class="container px-4 px-lg-5">
       <div class="col-md-6 mb-3 mb-md-0 mx-auto">
         <div class="card py-4 h-100">
           <div class="card-body text-center">
-            <h5 class="mb-2"><strong>Social</strong></h5>
+            <h5 class="mb-2"><strong>Follow the build</strong></h5>
+            <p class="text-black-50 mb-0">See progress and robot demos on Instagram.</p>
             <div class="social d-flex justify-content-center mt-3">
-              <a class="mx-2" href="https://www.instagram.com/bugbotlab/"><i class="fab fa-instagram text-black"></i></a>
-              <a class="mx-2" href="https://github.com/BugBotLab"><i class="fab fa-github text-black"></i></a>
-              <a class="mx-2" href="#"><i class="fab fa-discord text-black"></i></a>
-              <a class="mx-2" href="mailto:info@bugbotlab.com"><i class="fas fa-envelope text-black"></i></a>
+              <a class="mx-2" href="https://www.instagram.com/bugbotlab/" aria-label="Instagram"><i class="fab fa-instagram text-black"></i></a>
+              <a class="mx-2" href="https://github.com/BugBotLab" aria-label="GitHub"><i class="fab fa-github text-black"></i></a>
+              <a class="mx-2" href="mailto:info@bugbotlab.com" aria-label="Email"><i class="fas fa-envelope text-black"></i></a>
             </div>
           </div>
         </div>
@@ -243,189 +1179,9 @@
   <!-- Bootstrap core JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Carousels + navbar fade + enhanced anchor scrolling + copyright year -->
+  <!-- Navbar fade + smooth anchor scrolling + copyright year -->
   <script>
     (function () {
-      // ---- Data ----
-      var SHOP_PRODUCTS = [
-        {
-          id: 'pcm-mini',
-          title: 'BugBot Board',
-          desc: '32-bit microcontroller, motor drivers, IMU, and more on a tiny board.',
-          price: '',
-          image: 'assets/img/BugBot Board.png',
-          href: '#contact',
-          cta: 'Coming Soon'
-        },
-        {
-          id: 'bugbot-kit',
-          title: 'BugBot Kit',
-          desc: 'Everything you need to build your own tiny AI-ready bug-inspired robot.',
-          price: '',
-          image: 'assets/img/BugBot.png',
-          href: '#contact',
-          cta: 'Coming Soon'
-        }
-      ];
-
-      var LEARN_ITEMS = [
-        {
-          id: 'course-intro',
-          title: 'Free Intro Course',
-          desc: 'From blinking to bugs: a gentle first course in tiny AI robots.',
-          image: 'assets/img/robot.png',
-          href: '#contact',
-          cta: 'Coming Soon'
-        }
-      ];
-
-      var EVENTS_ITEMS = [
-        {
-          id: 'ai-vision-maze',
-          title: 'AI Vision Maze',
-          desc: 'Friendly challenge where robots navigate a maze using onboard vision.',
-          image: 'assets/img/maze.png',
-          href: '#contact',
-          cta: 'Coming Soon'
-        }
-      ];
-
-      // ---- Slide templates ----
-      function renderProductSlide(p) {
-        return [
-          '<article class="shop-card" data-product-id="', p.id, '">',
-          p.image ? (
-            '<div class="shop-img-wrap">' +
-            '<img class="shop-img" src="' + p.image + '" alt="' + p.title.replace(/"/g, '&quot;') + '">' +
-            '</div>'
-          ) : '',
-          '<div class="shop-body">',
-          '<h3 class="h5 mb-1">', p.title, '</h3>',
-          p.price ? '<div class="shop-price">' + p.price + '</div>' : '',
-          p.desc ? '<p class="shop-desc">' + p.desc + '</p>' : '',
-          '<div class="shop-actions">',
-          '<a class="btn btn-sm btn-dark rounded-pill" href="', p.href, '">', (p.cta || 'Learn more'), '</a>',
-          '</div>',
-          '</div>',
-          '</article>'
-        ].join('');
-      }
-
-      function renderInfoSlide(p) {
-        return [
-          '<article class="shop-card">',
-          p.image ? (
-            '<div class="shop-img-wrap">' +
-            '<img class="shop-img" src="' + p.image + '" alt="' + p.title.replace(/"/g, '&quot;') + '">' +
-            '</div>'
-          ) : '',
-          '<div class="shop-body">',
-          '<h3 class="h5 mb-1">', p.title, '</h3>',
-          p.desc ? '<p class="shop-desc">' + p.desc + '</p>' : '',
-          '<div class="shop-actions">',
-          '<a class="btn btn-sm btn-dark rounded-pill" href="', p.href, '">', (p.cta || 'Learn more'), '</a>',
-          '</div>',
-          '</div>',
-          '</article>'
-        ].join('');
-      }
-
-      // ---- Generic carousel ----
-      function initCarousel(config) {
-        var track = document.getElementById(config.trackId);
-        var dotsBox = document.getElementById(config.dotsId);
-        var prevBtn = document.getElementById(config.prevId);
-        var nextBtn = document.getElementById(config.nextId);
-        var items = config.items;
-        var render = config.render;
-
-        if (!track || !dotsBox || !prevBtn || !nextBtn || !items || !items.length) {
-          return;
-        }
-
-        // Build slides
-        track.innerHTML = '';
-        for (var i = 0; i < items.length; i++) {
-          var li = document.createElement('li');
-          li.className = 'shop-slide';
-          li.innerHTML = render(items[i], i);
-          track.appendChild(li);
-        }
-        var slides = Array.prototype.slice.call(track.children);
-
-        // Build dots
-        dotsBox.innerHTML = '';
-        for (var j = 0; j < slides.length; j++) {
-          (function (index) {
-            var dot = document.createElement('button');
-            dot.type = 'button';
-            dot.className = 'shop-dot';
-            dot.setAttribute('aria-label', 'Go to slide ' + (index + 1));
-            dot.addEventListener('click', function () {
-              goTo(index);
-            });
-            dotsBox.appendChild(dot);
-          })(j);
-        }
-        var dots = Array.prototype.slice.call(dotsBox.children);
-
-        var current = 0;
-        var scrollTimer = null;
-
-        function updateDots() {
-          for (var k = 0; k < dots.length; k++) {
-            dots[k].setAttribute('aria-current', k === current ? 'true' : 'false');
-          }
-        }
-
-        // 🔧 FIXED: scroll only the track horizontally, not the whole page
-        function goTo(index) {
-          if (!slides.length) return;
-          var count = slides.length;
-          if (index < 0) index = count - 1;
-          if (index >= count) index = 0;
-          current = index;
-
-          var targetLeft = slides[current].offsetLeft;
-          if (typeof track.scrollTo === 'function') {
-            track.scrollTo({ left: targetLeft, behavior: 'smooth' });
-          } else {
-            track.scrollLeft = targetLeft;
-          }
-
-          updateDots();
-        }
-
-        prevBtn.addEventListener('click', function () {
-          goTo(current - 1);
-        });
-
-        nextBtn.addEventListener('click', function () {
-          goTo(current + 1);
-        });
-
-        track.addEventListener('scroll', function () {
-          if (scrollTimer) window.clearTimeout(scrollTimer);
-          scrollTimer = window.setTimeout(function () {
-            var scrollLeft = track.scrollLeft;
-            var bestIndex = 0;
-            var bestDist = Infinity;
-            for (var m = 0; m < slides.length; m++) {
-              var dist = Math.abs(slides[m].offsetLeft - scrollLeft);
-              if (dist < bestDist) {
-                bestDist = dist;
-                bestIndex = m;
-              }
-            }
-            current = bestIndex;
-            updateDots();
-          }, 80);
-        });
-
-        // Initial state
-        goTo(0);
-      }
-
       // ---- Sync CSS --nav-h with actual navbar height ----
       function syncNavHeightVar() {
         var root = document.documentElement;
@@ -447,8 +1203,8 @@
       // ---- Navbar background fade: desktop only, solid on mobile ----
       function setupNavbarFade() {
         var nav = document.getElementById('mainNav');
-        var about = document.getElementById('about');
-        if (!nav || !about) return;
+        var firstSection = document.getElementById('proof');
+        if (!nav || !firstSection) return;
 
         var MOBILE_BREAKPOINT = 992;
 
@@ -462,11 +1218,11 @@
           }
 
           var navHeight = nav.offsetHeight || 1;
-          var aboutTop = about.getBoundingClientRect().top + window.pageYOffset - navHeight;
-          if (aboutTop < 1) aboutTop = 1;
+          var sectionTop = firstSection.getBoundingClientRect().top + window.pageYOffset - navHeight;
+          if (sectionTop < 1) sectionTop = 1;
 
           var scroll = window.pageYOffset || document.documentElement.scrollTop || 0;
-          var ratio = scroll / aboutTop;
+          var ratio = scroll / sectionTop;
           if (ratio < 0) ratio = 0;
           if (ratio > 1) ratio = 1;
 
@@ -562,34 +1318,6 @@
 
       window.addEventListener('DOMContentLoaded', function () {
         syncNavHeightVar();
-
-        initCarousel({
-          trackId: 'shopTrack',
-          dotsId: 'shopDots',
-          prevId: 'shopPrev',
-          nextId: 'shopNext',
-          items: SHOP_PRODUCTS,
-          render: renderProductSlide
-        });
-
-        initCarousel({
-          trackId: 'learnTrack',
-          dotsId: 'learnDots',
-          prevId: 'learnPrev',
-          nextId: 'learnNext',
-          items: LEARN_ITEMS,
-          render: renderInfoSlide
-        });
-
-        initCarousel({
-          trackId: 'eventsTrack',
-          dotsId: 'eventsDots',
-          prevId: 'eventsPrev',
-          nextId: 'eventsNext',
-          items: EVENTS_ITEMS,
-          render: renderInfoSlide
-        });
-
         setupNavbarFade();
         setupEnhancedAnchors();
       });
@@ -602,6 +1330,17 @@
       });
     })();
   </script>
+
+  <!-- MailerLite Universal -->
+  <script>
+    (function (w, d, e, u, f, l, n) {
+      w[f] = w[f] || function () { (w[f].q = w[f].q || []).push(arguments); },
+        l = d.createElement(e), l.async = 1, l.src = u,
+        n = d.getElementsByTagName(e)[0], n.parentNode.insertBefore(l, n);
+    })(window, document, 'script', 'https://assets.mailerlite.com/js/universal.js', 'ml');
+    ml('account', '2370876');
+  </script>
+  <!-- End MailerLite Universal -->
 
 </body>
 
