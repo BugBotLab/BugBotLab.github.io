@@ -198,6 +198,30 @@
       box-shadow: 0 .75rem 2rem rgba(0, 0, 0, .14);
     }
 
+    /* Embedded simulator */
+    .sim-frame {
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 .75rem 2rem rgba(0, 0, 0, .14);
+      border: 1px solid #e0ecdc;
+      background: #f4f8f1;
+    }
+
+    .sim-frame iframe {
+      display: block;
+      width: 100%;
+      height: 72vh;
+      min-height: 560px;
+      border: 0;
+    }
+
+    @media (max-width: 767px) {
+      .sim-frame iframe {
+        height: 80vh;
+        min-height: 640px;
+      }
+    }
+
     /* 3D board viewer (models served from the bugbot-hardware repo) */
     .board-tabs {
       display: flex;
@@ -675,6 +699,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#simulator">Simulator</a></li>
           <li class="nav-item"><a class="nav-link" href="#board">The Boards</a></li>
           <li class="nav-item"><a class="nav-link" href="#opensource">Open Source</a></li>
           <li class="nav-item"><a class="nav-link" href="#specs">Specs</a></li>
@@ -794,7 +819,7 @@
         Built in the open — follow on
         <a href="https://www.instagram.com/bugbotlab/">Instagram</a> ·
         code on <a href="https://github.com/BugBotLab">GitHub</a> ·
-        <a href="https://www.bugbotlab.com/bugbot-ide/web/"><strong>try the simulator now</strong></a>.
+        <a href="#simulator"><strong>try the simulator now</strong></a>.
       </p>
     </div>
   </section>
@@ -897,6 +922,36 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Simulator: try it right here -->
+  <section class="vh-section" id="simulator">
+    <div class="container px-4 px-lg-5">
+      <div class="row justify-content-center text-center mb-4">
+        <div class="col-lg-9">
+          <p class="section-label">Try it now, free</p>
+          <h2 class="mb-3">Drive a BugBot before you own one</h2>
+          <p class="text-muted">
+            This is the real BugBot simulator, the same one the lessons use. Write Python, press
+            <strong>Run in sim</strong>, and watch the robot work it out on the mat. The program below drives round a
+            wall to the green square. Change a number, run it again. Anyone can use it, no account, nothing to install,
+            and the same code runs on the real robot.
+          </p>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-11">
+          <div class="sim-frame">
+            <iframe src="https://www.bugbotlab.com/bugbot-ide/web/?task=reach-square&code=aW1wb3J0IGJ1Z2JvdDsgYnVnYm90LmdvKCkgICAjIGFsd2F5cyB0aGUgZmlyc3QgbGluZQoKbGVkKCdncmVlbicpCmZvcndhcmQoNjAsIGRpc3RhbmNlPTIwKSAgICAgIyBkcml2ZSAyMCBjbSwgdGhlbiBzdG9wCnJpZ2h0KDYwLCBkaXN0YW5jZT0yNSkgICAgICAgIyBzdHJhZmUgcm91bmQgdGhlIHdhbGwKZm9yd2FyZCg2MCwgZGlzdGFuY2U9NDUpCmxlZnQoNjAsIGRpc3RhbmNlPTI1KQpwcmludCgnbWFkZSBpdCB0bycsIHBvc2l0aW9uKCkpCg=="
+              title="BugBot simulator" loading="lazy" allow="serial"></iframe>
+          </div>
+          <div class="text-center mt-3">
+            <a class="btn btn-primary" href="https://www.bugbotlab.com/bugbot-ide/web/">Open the simulator full screen</a>
+            <a class="btn btn-outline-dark ms-2" href="https://www.bugbotlab.com/bugbot-docs/lessons/">See the lessons</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
