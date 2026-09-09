@@ -5,13 +5,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description"
-    content="The BugBot is a tiny four-legged robot with a camera and an AI-ready brain that you build and code yourself. Join the waitlist for launch news and build updates." />
+    content="The BugBot is a tiny four-legged robot with a camera and an AI-ready brain that you build and code yourself in Python. Open-source firmware, simulator and schematics out now. Join the waitlist for launch news." />
   <meta name="author" content="BugBotLab" />
   <title>BugBotLab — Build tiny AI robots.</title>
 
   <link rel="icon" type="image/x-icon" href="assets/img/green_bug.png" />
   <!-- Font Awesome -->
   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+  <!-- 3D board viewer -->
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
   <!-- Google fonts -->
   <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
   <link
@@ -194,6 +196,56 @@
       margin: 0 auto;
       border-radius: 1rem;
       box-shadow: 0 .75rem 2rem rgba(0, 0, 0, .14);
+    }
+
+    /* 3D board viewer (models served from the bugbot-hardware repo) */
+    .board-tabs {
+      display: flex;
+      justify-content: center;
+      gap: .5rem;
+      margin-bottom: .75rem;
+      flex-wrap: wrap;
+    }
+
+    .board-tab {
+      font: inherit;
+      font-weight: 700;
+      font-size: .9rem;
+      padding: .4rem 1rem;
+      border-radius: 9999px;
+      border: 1px solid #85B373;
+      background: #fff;
+      color: #2e2e2e;
+      cursor: pointer;
+    }
+
+    .board-tab.active,
+    .board-tab:hover {
+      background: #A2C594;
+      border-color: #A2C594;
+    }
+
+    .board-viewer {
+      width: 100%;
+      max-width: 560px;
+      height: 420px;
+      margin: 0 auto;
+      background: #f4f8f1;
+      border-radius: 1rem;
+      box-shadow: 0 .75rem 2rem rgba(0, 0, 0, .14);
+      --poster-color: #f4f8f1;
+    }
+
+    .board-viewer-note {
+      font-size: .8rem;
+      color: #5b6b73;
+      margin: .6rem 0 0;
+    }
+
+    @media (max-width: 767px) {
+      .board-viewer {
+        height: 300px;
+      }
     }
 
     .dev-badge {
@@ -623,7 +675,8 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
-          <li class="nav-item"><a class="nav-link" href="#board">The Board</a></li>
+          <li class="nav-item"><a class="nav-link" href="#board">The Boards</a></li>
+          <li class="nav-item"><a class="nav-link" href="#opensource">Open Source</a></li>
           <li class="nav-item"><a class="nav-link" href="#specs">Specs</a></li>
           <li class="nav-item"><a class="nav-link" href="#story">Story</a></li>
           <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
@@ -740,7 +793,8 @@
       <p class="proof-tagline">
         Built in the open — follow on
         <a href="https://www.instagram.com/bugbotlab/">Instagram</a> ·
-        code on <a href="https://github.com/BugBotLab">GitHub</a>.
+        code on <a href="https://github.com/BugBotLab">GitHub</a> ·
+        <a href="https://www.bugbotlab.com/bugbot-ide/web/"><strong>try the simulator now</strong></a>.
       </p>
     </div>
   </section>
@@ -893,41 +947,98 @@
     </div>
   </section>
 
-  <!-- The BugBot Board -->
+  <!-- The BugBot boards -->
   <section class="vh-section" id="board">
     <div class="container px-4 px-lg-5">
       <div class="row gx-4 gx-lg-5 align-items-center justify-content-center">
         <div class="col-lg-6 text-center mb-4 mb-lg-0">
-          <img src="assets/img/BugBot%20Board.png" alt="The BugBot Board — a compact robotics control board"
-            class="product-img" />
+          <div class="board-tabs" role="tablist" aria-label="Choose a board">
+            <button class="board-tab active" data-src="https://www.bugbotlab.com/bugbot-hardware/design/3d/BugBot_Vision_Board.glb" type="button">Vision</button>
+            <button class="board-tab" data-src="https://www.bugbotlab.com/bugbot-hardware/design/3d/BugBot_Motion_Board.glb" type="button">Motion</button>
+            <button class="board-tab" data-src="https://www.bugbotlab.com/bugbot-hardware/design/3d/BugBot_Odometry_Board.glb" type="button">Odometry</button>
+          </div>
+          <model-viewer id="boardViewer" class="board-viewer"
+            src="https://www.bugbotlab.com/bugbot-hardware/design/3d/BugBot_Vision_Board.glb"
+            poster="assets/img/bugbot-stack.jpg"
+            camera-controls auto-rotate shadow-intensity="1" exposure="1.1" loading="lazy"
+            alt="A BugBot board in 3D"></model-viewer>
+          <p class="board-viewer-note">Drag to rotate, scroll to zoom. Exported from the real design files.</p>
         </div>
         <div class="col-lg-6">
-          <span class="dev-badge">In development</span>
-          <h2 class="mb-3">The BugBot Board</h2>
+          <span class="dev-badge">First boards in production</span>
+          <h2 class="mb-3">The BugBot boards</h2>
           <p class="text-black-50">
-            A compact ESP32-S3 controller designed from scratch for the BugBot — and for whatever
-            else you can imagine. <strong>Open code. Hackable platform.</strong> Every pin and
-            port is fully documented — build with it, code it, extend it freely.
+            Three 40 mm boards designed from scratch, stacked into a palm-sized brain.
+            <strong>Vision</strong> carries an ESP32-P4 with Wi-Fi, the camera, the switch and the buttons.
+            <strong>Motion</strong> carries the battery, USB-C charging, four motor drivers and two servo outputs.
+            <strong>Odometry</strong> watches the mat with an optical-flow sensor and a 9-axis IMU.
           </p>
           <p class="text-black-50">
-            <strong>One board, many robots.</strong> All you really need is the BugBot Board. Pair
-            it with motors, sensors and a 3D-printed chassis, and you have the foundation for any
-            small robot you can imagine.
+            <strong>Open code. Open schematics. Hackable platform.</strong> Every circuit is published,
+            every pin is documented, and the firmware is yours to read, fork and change.
           </p>
           <ul class="board-points">
             <li class="board-point">
               <i class="fas fa-code-branch"></i>
-              <div><strong>Open source firmware</strong><span class="desc">Arduino, MicroPython or your own — TensorFlow Lite / TinyML supported. Full repo on GitHub.</span></div>
+              <div><strong>Open source firmware</strong><span class="desc">C underneath, Python on top. You program the robot in Python, on the robot itself. Full repos on GitHub.</span></div>
             </li>
             <li class="board-point">
               <i class="fas fa-book-open"></i>
-              <div><strong>Fully documented</strong><span class="desc">Pinout maps, electrical specs and API reference — all public.</span></div>
+              <div><strong>Schematics published</strong><span class="desc">Every sheet as KiCad and PDF, the full bill of materials, 3D models, and a circuit simulation of the whole stack you can run yourself.</span></div>
             </li>
             <li class="board-point">
               <i class="fas fa-puzzle-piece"></i>
-              <div><strong>Modular by design</strong><span class="desc">Plug-in connectors for motors, servos, the camera, ToF depth sensor and IMU.</span></div>
+              <div><strong>Modular by design</strong><span class="desc">Plug-in connectors for motors, servos, the camera, the ToF depth sensor and the odometry board.</span></div>
             </li>
           </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Open source release -->
+  <section class="vh-section bg-light" id="opensource">
+    <div class="container px-4 px-lg-5">
+      <div class="row justify-content-center text-center mb-4">
+        <div class="col-lg-9">
+          <p class="section-label">Out now</p>
+          <h2 class="mb-3">The open-source BugBot is live</h2>
+          <p class="text-muted">
+            The software, the simulator and the hardware design are public today, ahead of the boards.
+            Write a program in your browser, run it on a simulated BugBot, and look inside the real one.
+          </p>
+        </div>
+      </div>
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-4 mb-4">
+          <div class="card py-4 h-100">
+            <div class="card-body text-center">
+              <i class="fas fa-play-circle fa-2x mb-3" style="color: #85B373;"></i>
+              <h5 class="mb-2"><strong>Try the simulator</strong></h5>
+              <p class="text-black-50">A 3D BugBot on its mat, driven by your Python. Nothing to install. The same code runs on the real robot.</p>
+              <a class="btn btn-primary" href="https://www.bugbotlab.com/bugbot-ide/web/">Open the IDE</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card py-4 h-100">
+            <div class="card-body text-center">
+              <i class="fas fa-book-open fa-2x mb-3" style="color: #85B373;"></i>
+              <h5 class="mb-2"><strong>Read the docs</strong></h5>
+              <p class="text-black-50">Getting started, lessons with runnable code, the hardware, the boards in 3D and the full API reference.</p>
+              <a class="btn btn-primary" href="https://www.bugbotlab.com/bugbot-docs/">Go to the docs</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card py-4 h-100">
+            <div class="card-body text-center">
+              <i class="fab fa-github fa-2x mb-3" style="color: #85B373;"></i>
+              <h5 class="mb-2"><strong>Get the code</strong></h5>
+              <p class="text-black-50">Firmware, the laptop library, the IDE and simulator, the schematics and the circuit bench. MIT licensed.</p>
+              <a class="btn btn-primary" href="https://github.com/BugBotLab">BugBotLab on GitHub</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -940,23 +1051,22 @@
         <div class="col-lg-9">
           <p class="section-label">Specifications</p>
           <h2 class="mb-3">What's inside</h2>
-          <p class="text-muted">The hardware on the BugBot Board, in one place.</p>
+          <p class="text-muted">The hardware on the three BugBot boards, in one place.</p>
         </div>
       </div>
 
       <div class="spec-sheet">
-        <div class="spec-row"><span class="spec-label">Microcontroller</span><span class="spec-value">ESP32-S3 (dual-core, 240 MHz, Wi-Fi + Bluetooth)</span></div>
-        <div class="spec-row"><span class="spec-label">On-device AI</span><span class="spec-value">TensorFlow Lite for Microcontrollers — upload and run your own TinyML models</span></div>
-        <div class="spec-row"><span class="spec-label">Drive</span><span class="spec-value">4 × vibration motors — omnidirectional motion in a palm-sized chassis</span></div>
-        <div class="spec-row"><span class="spec-label">Motor outputs</span><span class="spec-value">4 × DC motor channels (TB6612FNG drivers) + 4 × servo headers</span></div>
-        <div class="spec-row"><span class="spec-label">Vision</span><span class="spec-value">Onboard camera + 8×8 Time-of-Flight depth sensor (64-zone ranging)</span></div>
-        <div class="spec-row"><span class="spec-label">Sensing</span><span class="spec-value">Bosch BNO055 9-axis IMU · microphone connector · I²C sensor port</span></div>
-        <div class="spec-row"><span class="spec-label">Storage</span><span class="spec-value">MicroSD card slot — code, data logging and ML model storage</span></div>
-        <div class="spec-row"><span class="spec-label">Connectivity</span><span class="spec-value">Wi-Fi · Bluetooth · USB-C</span></div>
-        <div class="spec-row"><span class="spec-label">Power</span><span class="spec-value">USB-C charging + onboard battery management (Li-ion / LiPo)</span></div>
-        <div class="spec-row"><span class="spec-label">Dimensions</span><span class="spec-value">~70 × 70 × 70 mm — palm-sized</span></div>
-        <div class="spec-row"><span class="spec-label">Programming</span><span class="spec-value">Scratch · Arduino · MicroPython · ESP-IDF</span></div>
-        <div class="spec-row"><span class="spec-label">Licence</span><span class="spec-value">Open firmware · documented hardware platform — firmware sources on GitHub</span></div>
+        <div class="spec-row"><span class="spec-label">Processor</span><span class="spec-value">ESP32-P4 (dual-core RISC-V, 400 MHz, 32 MB PSRAM) with an ESP32-C6 for Wi-Fi 6 and Bluetooth</span></div>
+        <div class="spec-row"><span class="spec-label">On-device vision</span><span class="spec-value">AprilTag, colour blob, edge and face detection on the robot; heavier AI on your laptop over Wi-Fi</span></div>
+        <div class="spec-row"><span class="spec-label">Drive</span><span class="spec-value">4 × vibration motors on DRV8830 drivers: omnidirectional motion in a palm-sized chassis</span></div>
+        <div class="spec-row"><span class="spec-label">Outputs</span><span class="spec-value">2 × servo outputs · RGB LED</span></div>
+        <div class="spec-row"><span class="spec-label">Vision</span><span class="spec-value">OV5647 camera on a 22-pin flex + 8×8 Time-of-Flight depth sensor (64-zone ranging)</span></div>
+        <div class="spec-row"><span class="spec-label">Motion sensing</span><span class="spec-value">PMW3360 optical-flow sensor reading the mat · Bosch BNO055 9-axis IMU</span></div>
+        <div class="spec-row"><span class="spec-label">Connectivity</span><span class="spec-value">Wi-Fi · Bluetooth · USB-C · USB dongle for the laptop</span></div>
+        <div class="spec-row"><span class="spec-label">Power</span><span class="spec-value">1S LiPo, USB-C charging with power-path, 3.2 V low-battery cut-off in firmware</span></div>
+        <div class="spec-row"><span class="spec-label">Boards</span><span class="spec-value">3 × 40 × 40 mm, 4-layer, stacked on 2 × 5 sockets</span></div>
+        <div class="spec-row"><span class="spec-label">Programming</span><span class="spec-value">Python on the robot · browser IDE with a 3D simulator · Python library on the laptop · C firmware (ESP-IDF)</span></div>
+        <div class="spec-row"><span class="spec-label">Licence</span><span class="spec-value">MIT: firmware, software, simulator, schematics and BOM on GitHub · PCB layout files stay private</span></div>
       </div>
     </div>
   </section>
@@ -1018,7 +1128,7 @@
               </h3>
               <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                 <div class="accordion-body">
-                  The BugBot is in final development — final hardware iterations and firmware polish are happening now. <strong>The BugBot Board launches first</strong>, with complete kits to follow later. The exact launch date will be announced to waitlist subscribers first.
+                  The first production run of the three boards is being made now, and the software is already public (see <a href="#opensource">Open Source</a>). <strong>The boards launch first</strong>, with complete kits to follow later. The exact launch date will be announced to waitlist subscribers first.
                 </div>
               </div>
             </div>
@@ -1031,7 +1141,7 @@
               </h3>
               <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                 <div class="accordion-body">
-                  At launch, the <strong>BugBot Board is sold on its own</strong> — the brain of the system. Everything else (3D-printable chassis, motor list, sensor BOM, full build guide) will be free and open on GitHub. You source the additional parts and print the chassis yourself. <strong>Complete plug-and-go kits will follow later</strong> — for now it's the maker route.
+                  At launch, the <strong>three BugBot boards are sold as a set</strong> — the brain of the system. Everything else (3D-printable chassis, motor list, sensor BOM, full build guide) is free and open on GitHub. You source the additional parts and print the chassis yourself. <strong>Complete plug-and-go kits will follow later</strong> — for now it's the maker route.
                 </div>
               </div>
             </div>
@@ -1096,7 +1206,7 @@
               </h3>
               <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                 <div class="accordion-body">
-                  <strong>Some basic soldering will be needed</strong> at the board-first launch, since you'll be assembling parts you source yourself. Future complete kits will be plug-and-screw. You'll also need access to a <strong>3D printer</strong> (or a print service) for the chassis. For code, the visual <strong>Scratch</strong> editor lets complete beginners write behaviours right away — and <strong>Arduino</strong>, <strong>MicroPython</strong> and on-device <strong>TinyML</strong> are there when you want to go deeper.
+                  <strong>Some basic soldering will be needed</strong> at the board-first launch, since you'll be assembling parts you source yourself. Future complete kits will be plug-and-screw. You'll also need access to a <strong>3D printer</strong> (or a print service) for the chassis. For code, you write <strong>Python</strong> in the browser IDE and press run: nothing to install, and you can practise in the <a href="https://www.bugbotlab.com/bugbot-ide/web/">3D simulator</a> before you have a robot. The <strong>C firmware</strong> and the laptop library are there when you want to go deeper.
                 </div>
               </div>
             </div>
@@ -1109,7 +1219,7 @@
               </h3>
               <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                 <div class="accordion-body">
-                  The <strong>firmware is fully open</strong> on GitHub — read it, fork it, modify it. The hardware platform is fully documented: every pin, port and interface, so you can extend it freely with any sensor, motor or module you can think of. The PCB design files themselves remain proprietary — that's how the BugBot stays affordable instead of racing knock-offs to the bottom.
+                  Yes, and it is out now. The <strong>firmware, the laptop library, the browser IDE and simulator, the schematics and the bill of materials</strong> are all public on <a href="https://github.com/BugBotLab">GitHub</a> under the MIT licence, with the docs and lessons at <a href="https://www.bugbotlab.com/bugbot-docs/">bugbotlab.com/bugbot-docs</a>. Every circuit and every pin is documented, so you can extend the robot with any sensor, motor or module you can think of. The one thing kept private is the PCB layout: that is how the BugBot stays affordable instead of racing knock-offs to the bottom.
                 </div>
               </div>
             </div>
@@ -1122,7 +1232,7 @@
               </h3>
               <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                 <div class="accordion-body">
-                  Yes — you can order multiple BugBot Boards at launch, and the open files mean you can print and assemble chassis pieces in bulk. <strong>Full classroom kits will follow when production scales — pre-printed, pre-assembled, and with lesson plans and teaching materials included</strong> — designed so a teacher can have a robot for <em>every</em> student. Drop a note to <a href="mailto:info@bugbotlab.com">info@bugbotlab.com</a> with your group size and timeline.
+                  Yes — you can order multiple board sets at launch, and the open files mean you can print and assemble chassis pieces in bulk. <strong>Full classroom kits will follow when production scales — pre-printed, pre-assembled, and with lesson plans and teaching materials included</strong> — designed so a teacher can have a robot for <em>every</em> student. Drop a note to <a href="mailto:info@bugbotlab.com">info@bugbotlab.com</a> with your group size and timeline.
                 </div>
               </div>
             </div>
@@ -1341,6 +1451,22 @@
     ml('account', '2370876');
   </script>
   <!-- End MailerLite Universal -->
+
+  <!-- Board viewer tabs -->
+  <script>
+    (function () {
+      var viewer = document.getElementById('boardViewer');
+      var tabs = document.querySelectorAll('.board-tab');
+      if (!viewer || !tabs.length) return;
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          tabs.forEach(function (t) { t.classList.remove('active'); });
+          tab.classList.add('active');
+          viewer.src = tab.getAttribute('data-src');
+        });
+      });
+    })();
+  </script>
 
 </body>
 
